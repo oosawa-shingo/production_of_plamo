@@ -9,4 +9,62 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+   header
+    nav.navbar.navbar-expand-lg.navbar-light
+     .container
+        a.navbar-brand.p-3 href="/"
+          h1 Production of Plamo
+        button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNavDropdown
+
+        - if end_user_signed_in?
+          ul.navbar-nav.ml-auto
+            li.nav-item.mr-3
+              = link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "btn btn-outline-secondary"
+
+            li.nav-item.mr-3
+              = link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-secondary"
+
+            li.nav-item.mr-3
+              = link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-secondary"
+
+            li.nav-item.mr-3
+              = link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary"
+
+        - else
+
+        - if admin_signed_in?
+            ul.navbar-nav.ml-auto
+              li.nav-item.mr-3
+                = link_to "投稿一覧", admin_post_plamos_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "レビュー一覧", admin_post_reviews_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "会員一覧", admin_end_users_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "タグ一覧", admin_tags_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary"
+
+        - else
+
+            ul.navbar-nav.ml-auto
+              li.nav-item.mr-3
+                = link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "新規登録", new_end_user_registration_path, class: "btn btn-outline-secondary"
+
+              li.nav-item.mr-3
+                = link_to "ログイン", new_end_user_session_path, class: "btn btn-outline-secondary"
+
+
     = yield
