@@ -1,0 +1,2 @@
+class PostPlamo < ApplicationRecord
+end
