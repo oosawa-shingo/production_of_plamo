@@ -1,0 +1,7 @@
+<div>
+  <%= image_tag @post_plamo.image, size:"300x300" %>
+  <p>ニックネーム：<%= @post_plamo.end_user.name %></p>
+  <p>タイトル：<%= @post_plamo.title %></p>
+  <p>こだわりポイントや設定 etc：<%= @post_plamo.introduction %></p>
+</div>
+<%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success" %>
