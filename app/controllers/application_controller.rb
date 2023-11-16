@@ -13,10 +13,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  before_action :authenticate_end_user!, except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    root_path
+    post_plamos_path
   end
 
   def after_sign_out_path_for(resource)

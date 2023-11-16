@@ -1,2 +1,33 @@
-h1 Public::PostReviews#new
-p Find me in app/views/public/post_reviews/new.html.slim
+<h1>新規レビュー</h1>
+<% if @post_review.errors.any? %>
+  <%= @post_review.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post_review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @post_review do |f| %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>商品名</h4>
+  <%= f.text_field :review_item %>
+
+  <h4>使ってみた感想</h4>
+  <%= f.text_area :feeling %>
+
+  <div class="field">
+    <h4>画像</h4>
+    <%= f.file_field :review_item_image, accept: "image/*" %>
+
+    <% if @post_review.review_item_image.attached? %>
+      <% @post_review.review_item_image.each do |image| %>
+        <%= image_tag image.variant(resize_to_limit: [200, 200]) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.submit '投稿', class: "btn btn-success" %>
+<% end %>

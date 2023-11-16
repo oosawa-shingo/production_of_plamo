@@ -8,28 +8,22 @@
 <%= form_with model: @end_user, url: end_user_session_path do |f| %>
 
 <div class="row mx-auto">
-  <div class="col-8">
-    <p>会員の方はこちらからログイン</p>
-  </div>
-</div>
-
-<div class="row mx-auto">
-  <div class="col-3 pl-5">
+  <div class="col-3 pl-5 offset-1">
     <P>メールアドレス</P>
   </div>
 
-  <div class="form-floating offset-1">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50", placeholder: "sample@example.com" %>
+  <div class="form-floating">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40", placeholder: "sample@example.com" %>
   </div>
 </div>
 
 <div class="row mx-auto">
-  <div class="col-3 pl-5">
+  <div class="col-3 pl-5 offset-1">
     <p>パスワード</p>
   </div>
 
-  <div class="form-floating offset-1">
-    <%= f.password_field :password, autocomplete: "current-password", size: "50" %>
+  <div class="form-floating">
+    <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
   </div>
 </div>
 
@@ -41,8 +35,8 @@
 <% end %>
 
 <div class="row my-3">
-  <div class="col-8">
-    <h4>会員登録がお済みでない方</h4>
+  <div class="col-8 offset-1">
+    <h5>会員登録がお済みでない方</h5>
   </div>
 </div>
 

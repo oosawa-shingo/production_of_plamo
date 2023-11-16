@@ -4,4 +4,8 @@
   <p>タイトル：<%= @post_plamo.title %></p>
   <p>こだわりポイントや設定 etc：<%= @post_plamo.introduction %></p>
 </div>
-<%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success" %>
+
+<% if @post_plamo.end_user == current_end_user %>
+  <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success" %>
+  <%= link_to "削除する", post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+<% end %>

@@ -1,2 +1,12 @@
-h1 Public::PostReviews#show
-p Find me in app/views/public/post_reviews/show.html.slim
+<div>
+  <%= image_tag @post_review.review_item_image, size:"300x300" %>
+  <p>ニックネーム：<%= @post_review.end_user.name %></p>
+  <p>タイトル：<%= @post_review.title %></p>
+  <p>商品名：<%= @post_review.review_item %></p>
+  <p>使ってみた感想：<%= @post_review.feeling %></p>
+</div>
+
+<% if @post_review.end_user == current_end_user %>
+  <%= link_to "編集する", edit_post_review_path, class: "btn btn-success" %>
+  <%= link_to "削除する", post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+<% end %>

@@ -6,8 +6,11 @@ class Public::PostPlamosController < ApplicationController
   def create
     @post_plamo = PostPlamo.new(post_plamo_params)
     @post_plamo.end_user_id = current_end_user.id
-    @post_plamo.save
-    redirect_to post_plamos_path
+    if @post_plamo.save
+      redirect_to post_plamos_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,7 +32,12 @@ class Public::PostPlamosController < ApplicationController
   end
 
   def destroy
+    post_plamo = PostPlamo.find(params[:id])
+    post_plamo.destroy
+    redirect_to post_plamos_path
   end
+
+  private
 
   def post_plamo_params
     params.require(:post_plamo).permit(:title, :introduction, :image)

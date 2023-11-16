@@ -3,4 +3,5 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_plamos
+  has_many :post_reviews
 end
