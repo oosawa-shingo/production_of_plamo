@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :post_plamos, only: [:show, :index, :destroy]
     resources :post_reviews, only: [:show, :index, :destroy]
     resources :end_users, only: [:show, :index, :edit, :update]
-    resources :tags, only: [:index, :create, :destroy]
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
   end
 
   scope module: :public do

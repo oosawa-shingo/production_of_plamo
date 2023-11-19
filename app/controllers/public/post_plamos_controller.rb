@@ -6,7 +6,9 @@ class Public::PostPlamosController < ApplicationController
   def create
     @post_plamo = PostPlamo.new(post_plamo_params)
     @post_plamo.end_user_id = current_end_user.id
+    tags = params[:post_plamo][:tags]
     if @post_plamo.save
+      @post_plamo.save(tags)
       redirect_to post_plamos_path
     else
       render :new
@@ -25,6 +27,13 @@ class Public::PostPlamosController < ApplicationController
 
   def index
     @post_plamos = PostPlamo.all
+    if params[:new_post_plamo]
+      @post_plamos = PostPlamo.new_post
+    elsif params[:old_post_plamo]
+      @post_plamos = PostPlamo.old_post
+    else
+      @post_plamos = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : PostPlamo.all
+    end
   end
 
   def show
@@ -40,6 +49,6 @@ class Public::PostPlamosController < ApplicationController
   private
 
   def post_plamo_params
-    params.require(:post_plamo).permit(:title, :introduction, :image)
+    params.require(:post_plamo).permit(:title, :introduction, :image, tag_ids: [])
   end
 end
