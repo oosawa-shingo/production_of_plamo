@@ -11,6 +11,15 @@
   <h4>こだわりポイントや設定 etc...</h4>
   <%= f.text_area :introduction %>
 
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+    <div class="form-check form-check-inline flex flex-wrap">
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= f.submit '保存' %>
 
 <% end %>

@@ -9,7 +9,6 @@ class PostPlamo < ApplicationRecord
   validates :title, presence: true
   validates :introduction, presence: true
   validates :image, presence: true
-  validates :tag, presence: true
 
   def get_image
     unless image.attached?
@@ -17,5 +16,9 @@ class PostPlamo < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
+  end
+
+  def self.search(keyword)
+    where("facility_name LIKE ?", "%#{keyword}%")
   end
 end

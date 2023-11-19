@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :post_plamos, only: [:show, :index, :destroy]
     resources :post_reviews, only: [:show, :index, :destroy]
     resources :end_users, only: [:show, :index, :edit, :update]
-    resources :tags, only: [:index, :create, :edit, :update, :destroy]
+    resources :tags, only: [:index, :create, :destroy]
   end
 
   scope module: :public do
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get '/end_users/my_page' => 'end_users#show'
     get '/end_users/my_page/edit' => 'end_users#edit'
     patch '/end_users/my_page/edit' => 'end_users#update'
+    get "search" => "post_plamos#search"
     resources :post_plamos, only: [:new, :show, :index, :edit, :update, :create, :destroy]
     resources :post_reviews, only: [:new, :show, :index, :edit, :update, :create, :destroy]
     resources :post_comments, only: [:create, :destroy]

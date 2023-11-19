@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
 
-  has_many :tag_tables, dependent: :destroy, foreign_key: 'tag_id'
+  has_many :tag_tables, dependent: :destroy
   has_many :post_plamos, through: :tag_tables
 
   validates :tag_name, presence: true

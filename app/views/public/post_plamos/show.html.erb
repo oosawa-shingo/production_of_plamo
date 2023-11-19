@@ -3,6 +3,9 @@
   <p>ニックネーム：<%= @post_plamo.end_user.name %></p>
   <p>タイトル：<%= @post_plamo.title %></p>
   <p>こだわりポイントや設定 etc：<%= @post_plamo.introduction %></p>
+  <% @post_plamo.tags.each do |tag| %>
+    <p>タグ：<%= tag.tag_name %></p>
+  <% end %>
 </div>
 
 <% if @post_plamo.end_user == current_end_user %>

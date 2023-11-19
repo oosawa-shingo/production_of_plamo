@@ -6,9 +6,7 @@ class Public::PostPlamosController < ApplicationController
   def create
     @post_plamo = PostPlamo.new(post_plamo_params)
     @post_plamo.end_user_id = current_end_user.id
-    tags = params[:post_plamo][:tags]
     if @post_plamo.save
-      @post_plamo.save(tags)
       redirect_to post_plamos_path
     else
       render :new
@@ -34,6 +32,12 @@ class Public::PostPlamosController < ApplicationController
     else
       @post_plamos = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : PostPlamo.all
     end
+    if params[:keyword]
+      @post_plamos = @post_plamos.search(params[:keyword]).page(params[:page])
+    else
+      @post_plamos = @post_plamos.page(params[:page])
+    end
+    @keyword = params[:keyword]
   end
 
   def show
