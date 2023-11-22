@@ -19,6 +19,6 @@ class PostPlamo < ApplicationRecord
   end
 
   def self.search(keyword)
-    where("facility_name LIKE ?", "%#{keyword}%")
+    where("title LIKE ? or introduction LIKE ?",  "%#{keyword}%", "%#{keyword}%")
   end
 end

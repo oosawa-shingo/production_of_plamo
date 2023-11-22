@@ -3,6 +3,9 @@ class PostReview < ApplicationRecord
    has_one_attached :review_item_image
    belongs_to :end_user
 
+   has_many :tag_tables, dependent: :destroy
+   has_many :tags, through: :tag_tables
+
    validates :title, presence: true
    validates :review_item, presence: true
    validates :feeling, presence: true
@@ -14,5 +17,9 @@ class PostReview < ApplicationRecord
        image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
      end
      review_item_image
+   end
+
+   def self.search(keyword)
+     where("title LIKE ? or review_item LIKE ? or feeling LIKE ?",  "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
    end
 end

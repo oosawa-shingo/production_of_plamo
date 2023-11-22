@@ -6,6 +6,18 @@
     <div class="col-2">
       <%= link_to "投稿する", new_post_review_path, class: "btn btn-success btn-block" %>
     </div>
+    <div class="col-4 offset-1">
+      <%= form_with url: post_reviews_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
+        <div class="input-group">
+          <%= f.text_field :keyword, value: @keyword, class: "form-control search-control", placeholder: "キーワードを入力" %>
+          <span class="input-group-btn input-group-append">
+            <%= button_tag type: "submit", class: "btn btn-secondary search-btn" do %>
+              <i class="fas fa-search"></i> 検索</submit>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
@@ -34,3 +46,4 @@
     </div>
     <% end %>
   </div>
+</div>

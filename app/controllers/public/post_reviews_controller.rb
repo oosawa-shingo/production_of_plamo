@@ -25,6 +25,12 @@ class Public::PostReviewsController < ApplicationController
 
   def index
     @post_reviews = PostReview.all
+    if params[:keyword]
+      @post_reviews = @post_reviews.search(params[:keyword]).page(params[:page])
+    else
+      @post_reviews = @post_reviews.page(params[:page])
+    end
+    @keyword = params[:keyword]
   end
 
   def show
@@ -40,6 +46,6 @@ class Public::PostReviewsController < ApplicationController
   private
 
   def post_review_params
-    params.require(:post_review).permit(:title, :review_item, :feeling, :review_item_image)
+    params.require(:post_review).permit(:title, :review_item, :feeling, :review_item_image, tag_ids: [])
   end
 end

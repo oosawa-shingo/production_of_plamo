@@ -30,7 +30,7 @@ class Public::PostPlamosController < ApplicationController
     elsif params[:old_post_plamo]
       @post_plamos = PostPlamo.old_post
     else
-      @post_plamos = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : PostPlamo.all
+      @post_plamos = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_plamos : PostPlamo.all
     end
     if params[:keyword]
       @post_plamos = @post_plamos.search(params[:keyword]).page(params[:page])
