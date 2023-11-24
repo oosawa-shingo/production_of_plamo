@@ -6,6 +6,19 @@
   <% @post_plamo.tags.each do |tag| %>
     <p>タグ：<%= tag.tag_name %></p>
   <% end %>
+  <% if @post_plamo.favorited_by?(current_end_user) %>
+    <h6>
+      <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
+        ♥<%= @post_plamo.favorites.count %> いいね
+      <% end %>
+    </h6>
+    <% else %>
+    <h6>
+      <%= link_to post_plamo_favorites_path(@post_plamo), method: :post do %>
+        ♡<%= @post_plamo.favorites.count %> いいね
+      <% end %>
+    </h6>
+  <% end %>
 </div>
 
 <% if @post_plamo.end_user == current_end_user %>

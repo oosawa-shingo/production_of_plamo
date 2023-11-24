@@ -27,11 +27,13 @@ Rails.application.routes.draw do
     patch '/end_users/my_page/edit' => 'end_users#update'
     get "search" => "post_plamos#search"
     get "search" => "post_reviews#search"
-    resources :post_plamos, only: [:new, :show, :index, :edit, :update, :create, :destroy]
-    resources :post_reviews, only: [:new, :show, :index, :edit, :update, :create, :destroy]
+    resources :post_plamos, only: [:new, :show, :index, :edit, :update, :create, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    resources :post_reviews, only: [:new, :show, :index, :edit, :update, :create, :destroy] do
+      resource :usefuls, only: [:create, :destroy]
+    end
     resources :post_comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
-    resources :usefuls, only: [:create, :destroy]
   end
 
 end
