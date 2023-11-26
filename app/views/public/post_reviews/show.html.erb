@@ -4,7 +4,7 @@
   <p>タイトル：<%= @post_review.title %></p>
   <p>商品名：<%= @post_review.review_item %></p>
   <p>使ってみた感想：<%= @post_review.feeling %></p>
-  <% if @post_review.favorited_by?(current_end_user) %>
+  <% if @post_review.usefuld_by?(current_end_user) %>
     <h6>
       <%= link_to post_review_usefuls_path(@post_review), method: :delete do %>
         ♥d(^_^o)<%= @post_review.usefuls.count %> 参考になった
@@ -13,7 +13,7 @@
     <% else %>
     <h6>
       <%= link_to post_review_usefuls_path(@post_review), method: :post do %>
-        ♡d(^_^o)<%= @post_plamo.usefuls.count %> 参考になった
+        ♡d(^_^o)<%= @post_review.usefuls.count %> 参考になった
       <% end %>
     </h6>
   <% end %>

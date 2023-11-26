@@ -2,8 +2,18 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_image
+
   has_many :post_plamos, dependent: :destroy
   has_many :post_reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :usefuls, dependent: :destroy
 
+  def get_profile_image
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image
+  end
 end

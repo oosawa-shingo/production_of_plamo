@@ -9,3 +9,10 @@ Admin.create!(
   email: 'aaa@aaa',
   password: "aaaaaa"
 )
+Tag.create([
+  { tag_name: '#ガンプラ' },
+  { tag_name: '#車' },
+  { tag_name: '#模型' },
+  { tag_name: '#その他' },
+  { tag_name: '#ツール' },
+])

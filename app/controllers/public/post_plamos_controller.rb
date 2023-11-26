@@ -53,6 +53,6 @@ class Public::PostPlamosController < ApplicationController
   private
 
   def post_plamo_params
-    params.require(:post_plamo).permit(:title, :introduction, :image, tag_ids: [])
+    params.require(:post_plamo).permit(:title, :introduction, :plamo_image, tag_ids: [])
   end
 end

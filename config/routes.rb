@@ -21,12 +21,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'end_users/confirm'
+    get '/end_users/my_page/favorites' => 'end_users#favorites'
     patch 'end_users/withdrawn'
     get '/end_users/my_page' => 'end_users#show'
     get '/end_users/my_page/edit' => 'end_users#edit'
     patch '/end_users/my_page/edit' => 'end_users#update'
-    get "search" => "post_plamos#search"
-    get "search" => "post_reviews#search"
+    get 'search' => 'post_plamos#search'
+    get 'search' => 'post_reviews#search'
     resources :post_plamos, only: [:new, :show, :index, :edit, :update, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end

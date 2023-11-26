@@ -1,23 +1,22 @@
 class PostPlamo < ApplicationRecord
 
-  has_one_attached :image
+  has_one_attached :plamo_image
   belongs_to :end_user
 
   has_many :tag_tables, dependent: :destroy
   has_many :tags, through: :tag_tables
   has_many :favorites, dependent: :destroy
-  has_many :usefuls, dependent: :destroy
 
   validates :title, presence: true
   validates :introduction, presence: true
-  validates :image, presence: true
+  validates :plamo_image, presence: true
 
-  def get_image
-    unless image.attached?
+  def get_plamo_image
+    unless plamo_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      plamo_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image
+    plamo_image
   end
 
   def self.search(keyword)
@@ -28,7 +27,4 @@ class PostPlamo < ApplicationRecord
     favorites.exists?(end_user_id: end_user.id)
   end
 
-  def usefuled_by?(end_user)
-    usefuls.exists?(end_user_id: end_user.id)
-  end
 end
