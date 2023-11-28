@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row my-3 justify-content-between offset-1">
     <div class="col-4">
-      <h4>いいね一覧</h4>
+      <h4>参考になった一覧</h4>
     </div>
   </div>
 
@@ -14,11 +14,11 @@
             <th>タイトル</th>
           </tr>
         </thead>
-        <% @favorite_posts.each do |post| %>
+        <% @useful_posts.each do |post| %>
         <tbody>
           <tr>
             <td><%= post.end_user.name %></td>
-            <td><%= link_to post.title, post_plamo_path(post) %></td>
+            <td><%= link_to post.title, post_review_path(post) %></td>
           </tr>
         </tbody>
         <% end %>

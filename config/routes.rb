@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'end_users/confirm'
     get '/end_users/my_page/favorites' => 'end_users#favorites'
+    get '/end_users/my_page/usefuls' => 'end_users#usefuls'
     patch 'end_users/withdrawn'
     get '/end_users/my_page' => 'end_users#show'
     get '/end_users/my_page/edit' => 'end_users#edit'
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     get 'search' => 'post_reviews#search'
     resources :post_plamos, only: [:new, :show, :index, :edit, :update, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
     resources :post_reviews, only: [:new, :show, :index, :edit, :update, :create, :destroy] do
       resource :usefuls, only: [:create, :destroy]

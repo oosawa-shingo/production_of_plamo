@@ -42,6 +42,7 @@ class Public::PostPlamosController < ApplicationController
 
   def show
     @post_plamo = PostPlamo.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def destroy

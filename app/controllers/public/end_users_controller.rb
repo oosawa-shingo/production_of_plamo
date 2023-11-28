@@ -19,7 +19,12 @@ class Public::EndUsersController < ApplicationController
     @end_user = EndUser.find(current_end_user.id)
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_plamo_id)
     @favorite_posts = PostPlamo.find(favorites)
-    @post_plamo = PostPlamo.find(current_end_user.id)
+  end
+
+  def usefuls
+    @end_user = EndUser.find(current_end_user.id)
+    usefuls = Useful.where(end_user_id: @end_user.id).pluck(:post_review_id)
+    @useful_posts = PostReview.find(usefuls)
   end
 
    private

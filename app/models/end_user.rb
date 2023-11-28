@@ -8,6 +8,7 @@ class EndUser < ApplicationRecord
   has_many :post_reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :usefuls, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   def get_profile_image
     unless profile_image.attached?
