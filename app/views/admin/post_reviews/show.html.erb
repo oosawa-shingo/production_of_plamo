@@ -1,2 +1,8 @@
-h1 Admin::PostReviews#show
-p Find me in app/views/admin/post_reviews/show.html.slim
+<%= link_to "削除する", admin_post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+<div>
+  <%= image_tag @post_review.review_item_image, size:"300x300" %>
+  <p>ニックネーム：<%= @post_review.end_user.name %></p>
+  <p>タイトル：<%= @post_review.title %></p>
+  <p>商品名：<%= @post_review.review_item %></p>
+  <p>使ってみた感想：<%= @post_review.feeling %></p>
+</div>

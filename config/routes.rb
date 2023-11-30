@@ -11,11 +11,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    get 'post_comments/destroy'
-    resources :post_plamos, only: [:show, :index, :destroy]
+    # get 'post_comments/destroy'
+    resources :post_plamos, only: [:show, :destroy]
     resources :post_reviews, only: [:show, :index, :destroy]
     resources :end_users, only: [:show, :index, :edit, :update]
     resources :tags, only: [:index, :create, :destroy]
+    resources :post_comments, only: [:destroy]
   end
 
   scope module: :public do
