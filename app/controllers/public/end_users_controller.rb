@@ -4,9 +4,25 @@ class Public::EndUsersController < ApplicationController
   end
 
   def edit
+    @end_user = EndUser.find(current_end_user.id)
   end
 
   def update
+    @end_user = EndUser.find(current_end_user.id)
+    @end_user.update(end_user_params)
+    redirect_to end_users_my_page_path(end_user_params)
+  end
+
+  def plamos
+    @post_plamos = current_end_user.post_plamos.all
+  end
+
+  def reviews
+    @post_reviews = current_end_user.post_reviews.all
+  end
+
+  def comments
+    @post_comments = current_end_user.post_comments.all
   end
 
   def confirm
@@ -30,6 +46,6 @@ class Public::EndUsersController < ApplicationController
    private
 
   def end_user_params
-    params.require(:end_user).permit(:name, :introduction)
+    params.require(:end_user).permit(:name, :introduction, :profile_image)
   end
 end

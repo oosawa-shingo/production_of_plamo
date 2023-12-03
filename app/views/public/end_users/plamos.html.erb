@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="row my-3 offset-1">
+    <div class="col-4">
+      <h4>投稿一覧</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>投稿日時</th>
+            <th>タイトル</th>
+            <th>コメント件数</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @post_plamos.each do |post_plamo| %>
+          <td>
+            <%= link_to post_plamo_path(post_plamo) do %>
+              <%= post_plamo.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            <% end %>
+          </td>
+          <td><%= post_plamo.title %></td>
+          <td><%= post_plamo.post_comments.count %>件</td>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <!--<div class="row">-->
+  <!--  <div class="col-1 mx-auto">-->
+  <!--    <#%= paginate @post_plamos %>-->
+  <!--  </div>-->
+  <!--</div>-->
+</div>

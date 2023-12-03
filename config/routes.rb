@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    # get 'post_comments/destroy'
     resources :post_plamos, only: [:show, :destroy]
     resources :post_reviews, only: [:show, :index, :destroy]
     resources :end_users, only: [:show, :index, :edit, :update]
@@ -22,6 +21,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'end_users/confirm'
+    get 'end_users/plamos'
+    get 'end_users/reviews'
+    get 'end_users/comments'
     get '/end_users/my_page/favorites' => 'end_users#favorites'
     get '/end_users/my_page/usefuls' => 'end_users#usefuls'
     patch 'end_users/withdrawn'

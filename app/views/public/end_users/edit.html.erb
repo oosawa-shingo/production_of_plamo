@@ -1,2 +1,60 @@
-h1 Public::EndUsers#edit
-p Find me in app/views/public/end_users/edit.html.slim
+<div class="container my-5">
+  <div class="row my-3 offset-1">
+    <div class="col-8">
+      <h4>会員情報編集</h4>
+    </div>
+  </div>
+
+  <%= form_with model: @end_user, url: end_users_my_page_edit_path do |f| %>
+
+   <div class="row mx-auto">
+    <div class="col-3">
+      <P>プロフイール画像</P>
+    </div>
+
+    <div class="form-floating">
+      <%= f.file_field :profile_image,  accept: "image/*", autofocus: true, id:":ProfileImage" %>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <div class="col-3">
+      <P>ニックネーム</P>
+    </div>
+
+    <div class="form-floating">
+      <%= f.text_field :name, autofocus: true, id:":Name" %>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <div class="col-3">
+      <p>メールアドレス</p>
+    </div>
+
+    <div class="from-floating">
+      <%= f.text_field :email, autofocus: true, id:"inputEmail" %>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <div class="col-3">
+      <p>自己紹介</p>
+    </div>
+
+    <div class="from-floating">
+      <%= f.text_area :introduction, :size => "51x8", autofocus: true, id:":Introduction" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-3 text-center">
+      <%= f.submit "編集内容を保存する", class: "btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="col-2 text-center">
+    <%= link_to "退会する", end_users_confirm_path, class: "btn btn-danger" %>
+  </div>
+</div>

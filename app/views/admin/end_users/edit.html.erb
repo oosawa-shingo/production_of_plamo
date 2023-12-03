@@ -1,2 +1,38 @@
-h1 Admin::EndUsers#edit
-p Find me in app/views/admin/end_users/edit.html.slim
+<div class="container my-5">
+  <div class="row my-3 offset-1">
+    <div class="col-8">
+      <h4><%= @end_user.name %>さんの会員詳細</h4>
+    </div>
+  </div>
+
+  <div class="row offset-1">
+    <div class="col-8">
+    <%= form_with model: @end_user, url: admin_end_user_path do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>会員ID</th><td><%= @end_user.id %></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ニックネーム" %></td>
+        </tr>
+          <th>メールアドレス</th>
+          <td><%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス"%></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <%= f.radio_button :is_active, "true" %>
+            <%= f.label :is_active, "有効" %>
+            <%= f.radio_button :is_active, "false" %>
+            <%= f.label :is_active, "退会" %>
+          </td>
+        </tr>
+      </table>
+      <div class="offset-3">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
