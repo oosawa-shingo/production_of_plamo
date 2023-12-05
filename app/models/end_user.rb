@@ -17,4 +17,11 @@ class EndUser < ApplicationRecord
     end
     profile_image
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64
+      end_user.name = "ゲスト"
+    end
+  end
 end
