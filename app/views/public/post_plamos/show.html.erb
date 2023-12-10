@@ -1,11 +1,63 @@
-<div>
-  <%= image_tag @post_plamo.plamo_image, size:"300x300" %>
-  <p>ニックネーム：<%= @post_plamo.end_user.name %></p>
-  <p>タイトル：<%= @post_plamo.title %></p>
-  <p>こだわりポイントや設定 etc：<%= @post_plamo.introduction %></p>
-  <% @post_plamo.tags.each do |tag| %>
-    <p>タグ：<%= tag.tag_name %></p>
-  <% end %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <!--<div>-->
+      <!--  <#%= link_to @post_plamo.get_plamo_images[0], "data-lightbox": @post_plamo.get_plamo_images[0] do %>-->
+      <!--    <#%= image_tag @post_plamo.get_plamo_images[0], class:"img", size:"300x300", :style=>"width:500;" %>-->
+      <!--  <#% end %>-->
+        <!--<#%= image_tag @post_plamo.get_plamo_images[0], size:"300x300" %>-->
+      <!--</div>-->
+      <!--<div class="slider">-->
+      <!--  <#% @post_plamo.plamo_images.each do |images| %>-->
+      <!--    <#%= image_tag images, class:"img", size:"100x100" %>-->
+      <!--  <#% end %>-->
+      <!--</div>-->
+      <div class="slider">
+        <% @post_plamo.plamo_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+      <div class="thumbnail">
+        <% @post_plamo.plamo_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-10 mx-auto">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>ニックネーム</th>
+            <td><%= @post_plamo.end_user.name %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @post_plamo.title %></td>
+          </tr>
+          <tr>
+            <th>こだわりポイントや設定 etc</th>
+            <td><%= @post_plamo.introduction %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <% @post_plamo.tags.each do |tag| %>
+              <td><%= tag.tag_name %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--<div>-->
+  <!--  <#% @post_plamo.tags.each do |tag| %>-->
+  <!--    <p>タグ：<#%= tag.tag_name %></p>-->
+  <!--  <#% end %>-->
+  <!--</div>-->
+
   <% if @post_plamo.favorited_by?(current_end_user) %>
     <h6>
       <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
@@ -19,7 +71,6 @@
       <% end %>
     </h6>
   <% end %>
-</div>
 
 <% if @post_plamo.end_user == current_end_user %>
   <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success" %>
@@ -42,4 +93,5 @@
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
+</div>
 </div>

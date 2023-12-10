@@ -26,9 +26,14 @@ class Public::EndUsersController < ApplicationController
   end
 
   def confirm
+    @end_user = EndUser.find(current_end_user.id)
   end
 
   def withdrawn
+    @end_user = EndUser.find(current_end_user.id)
+    @end_user.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   def favorites
