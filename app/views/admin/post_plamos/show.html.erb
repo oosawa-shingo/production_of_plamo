@@ -1,13 +1,45 @@
 <%= link_to "削除する", admin_post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-<div>
-  <%= image_tag @post_plamo.plamo_image, size:"300x300" %>
-  <p>ニックネーム：<%= @post_plamo.end_user.name %></p>
-  <p>タイトル：<%= @post_plamo.title %></p>
-  <p>こだわりポイントや設定 etc：<%= @post_plamo.introduction %></p>
-  <% @post_plamo.tags.each do |tag| %>
-    <p>タグ：<%= tag.tag_name %></p>
-  <% end %>
-</div>
+
+<div class="container">
+  <div class="row mx-auto">
+    <div class="col-5">
+      <div class="slider">
+        <% @post_plamo.plamo_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+      <div class="thumbnail">
+        <% @post_plamo.plamo_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-7">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>ニックネーム</th>
+            <td><%= @post_plamo.end_user.name %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @post_plamo.title %></td>
+          </tr>
+          <tr>
+            <th>こだわりポイントや設定 etc</th>
+            <td><%= @post_plamo.introduction %></td>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <% @post_plamo.tags.each do |tag| %>
+            <td><%= tag.tag_name %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 <div>
   <p>コメント件数：<%= @post_plamo.post_comments.count %></p>

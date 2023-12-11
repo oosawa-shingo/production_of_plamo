@@ -1,6 +1,18 @@
-document.addEventListener('DOMContentLoaded', function(){
-  const postForm = document.getElementById('new_post');
-  const previewList = document.getElementById('previews');
-  if (!postForm) return null;
-  console.log("preview.jsが読み込まれました");
-});
+// if (document.URL.match(/new/)){
+//   document.addEventListener('DOMContentLoaded', () => {
+//     const createImageHTML = (blob) => {
+//       const imageElement = document.getElementById('new-image');
+//       const blobImage = document.createElement('img');
+//       blobImage.setAttribute('class', 'new-img')
+//       blobImage.setAttribute('src', blob);
+
+//       imageElement.appendChild(blobImage);
+//     };
+
+//     document.getElementById('post_palmo_plamo_images').addEventListener('change', (e) =>{
+//       const file = e.target.files[0];
+//       const blob = window.URL.createObjectURL(file);
+//       createImageHTML(blob);
+//     });
+//   });
+// }

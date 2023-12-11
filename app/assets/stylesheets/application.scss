@@ -34,15 +34,15 @@
   color: #333 !important;
 }
 
-.thumbnail {
-  opacity: .1;
-  transition: .1s linear;
-}
-
-.slick-current {
-  opacity: 1;
+.thumbnail .slick-current {
+  opacity: 0.5;
 }
 
 .thumbnail .slick-track {
   transform: unset !important;
+}
+
+.new-img{
+  width: 400px;
+  object-fit: cover;
 }

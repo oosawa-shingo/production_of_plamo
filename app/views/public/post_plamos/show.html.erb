@@ -1,19 +1,6 @@
-
-
 <div class="container">
-  <div class="row">
-    <div class="col-6 mx-auto">
-      <!--<div>-->
-      <!--  <#%= link_to @post_plamo.get_plamo_images[0], "data-lightbox": @post_plamo.get_plamo_images[0] do %>-->
-      <!--    <#%= image_tag @post_plamo.get_plamo_images[0], class:"img", size:"300x300", :style=>"width:500;" %>-->
-      <!--  <#% end %>-->
-        <!--<#%= image_tag @post_plamo.get_plamo_images[0], size:"300x300" %>-->
-      <!--</div>-->
-      <!--<div class="slider">-->
-      <!--  <#% @post_plamo.plamo_images.each do |images| %>-->
-      <!--    <#%= image_tag images, class:"img", size:"100x100" %>-->
-      <!--  <#% end %>-->
-      <!--</div>-->
+  <div class="row mx-auto">
+    <div class="col-5">
       <div class="slider">
         <% @post_plamo.plamo_images.each do |images| %>
           <%= image_tag images, class:"img" %>
@@ -26,7 +13,7 @@
       </div>
     </div>
 
-    <div class="col-10 mx-auto">
+    <div class="col-7">
       <table class="table">
         <tbody>
           <tr>
@@ -44,19 +31,13 @@
           <tr>
             <th>タグ</th>
             <% @post_plamo.tags.each do |tag| %>
-              <td><%= tag.tag_name %></td>
+            <td><%= tag.tag_name %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
-  <!--<div>-->
-  <!--  <#% @post_plamo.tags.each do |tag| %>-->
-  <!--    <p>タグ：<#%= tag.tag_name %></p>-->
-  <!--  <#% end %>-->
-  <!--</div>-->
 
   <% if @post_plamo.favorited_by?(current_end_user) %>
     <h6>
@@ -88,10 +69,13 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @post_plamo.favorited_by?(current_end_user) %>
 <div>
   <%= form_with model: [@post_plamo, @post_comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
 </div>
+<% end %>
 </div>

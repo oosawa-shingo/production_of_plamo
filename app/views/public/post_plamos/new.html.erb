@@ -19,11 +19,18 @@
     <h4>画像</h4>
     <%= f.file_field :plamo_images, accept: "image/*", multiple: true %>
 
+    <div class="image_preview">
+      <!--<#%= if @post_plamo.plamo_images.attached? %>-->
+      <!--  <#%= image_tag @post_plamo.plamo_images.variant(resize_to_fill: [100, 100]).processed %>-->
+      <!--<#% end %>-->
+
+
     <% if @post_plamo.plamo_images.attached? %>
-      <% @post_plamo.plamo_images do |images| %>
-        <%= image_tag images[0].variant(resize_to_limit: [200, 200]) %>
+      <%= @post_plamo.plamo_images do |images| %>
+        <%= image_tag images.variant(resize_to_limit: [200, 200]) %>
       <% end %>
     <% end %>
+    </div>
   </div>
 
   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
