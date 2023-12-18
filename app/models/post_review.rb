@@ -1,6 +1,6 @@
 class PostReview < ApplicationRecord
 
-   has_one_attached :review_item_image
+   has_many_attached :review_images
    belongs_to :end_user
 
    has_many :usefuls, dependent: :destroy
@@ -8,14 +8,14 @@ class PostReview < ApplicationRecord
    validates :title, presence: true
    validates :review_item, presence: true
    validates :feeling, presence: true
-   validates :review_item_image, presence: true
+   validates :review_images, presence: true
 
-   def get_review_item_image
-     unless review_item_image.attached?
+   def get_review_images
+     unless review_images.attached?
        file_path = Rails.root.join('app/assets/images/no_image.jpg')
-       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+       review_images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
      end
-     review_item_image
+     review_images
    end
 
    def self.search(keyword)

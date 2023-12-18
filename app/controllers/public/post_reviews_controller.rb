@@ -46,6 +46,6 @@ class Public::PostReviewsController < ApplicationController
   private
 
   def post_review_params
-    params.require(:post_review).permit(:title, :review_item, :feeling, :review_item_image)
+    params.require(:post_review).permit(:title, :review_item, :feeling, review_images: [])
   end
 end

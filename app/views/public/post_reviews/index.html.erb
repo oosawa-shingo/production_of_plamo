@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <h1>新着レビュー</h1>
+      <h1>NEW REVIEW</h1>
     </div>
     <div class="col-2">
-      <%= link_to "投稿する", new_post_review_path, class: "btn btn-success btn-block" %>
+      <%= link_to "投稿する", new_post_review_path, class: "btn btn-outline-primary btn-block" %>
     </div>
     <div class="col-4 offset-1">
       <%= form_with url: post_reviews_path, method: :get, local: true, class: 'boards__searchForm' do |f|%>
@@ -23,26 +23,26 @@
   <div class="row">
     <% @post_reviews.each do |post_reviews| %>
     <div class="col-3">
-    <div class="card-deck my-3">
-    <div class="card text-center pt-2" style="width: 10rem;">
-      <%= link_to post_review_path(post_reviews) do %>
-        <%= image_tag post_reviews.get_review_item_image, class:"card-imag-top", size:"200x200" %>
-      <% end %>
+      <div class="card-deck my-3">
+        <div class="card text-center pt-2" style="width: 10rem;">
+          <%= link_to post_review_path(post_reviews) do %>
+            <%= image_tag post_reviews.get_review_images[0], class:"card-imag-top", size:"200x200" %>
+          <% end %>
 
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12">
-          <p class="card-text">
-            <%= post_reviews.title %>
-          </P>
-          <p class="card-text">
-            <%= post_reviews.end_user.name %>
-          </p>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-10 mx-auto">
+                <p class="card-text text-left">
+                  <%= post_reviews.title %>
+                </P>
+                <p class="card-text text-left">
+                  <%= image_tag post_reviews.end_user.get_profile_image, size: "50x50", class:"mr-3 rounded-circle"; %><%= post_reviews.end_user.name %>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
     </div>
     <% end %>
   </div>

@@ -1,1 +1,45 @@
 @use '~bootstrap/scss/bootstrap';
+
+.slick-prev {
+  font-size: 50px;
+  position: absolute;
+  z-index: 100;
+  left: -100px;
+  top: 300px;
+ }
+
+.slick-next {
+  font-size: 50px;
+  position: absolute;
+  z-index: 100;
+  right: -100px;
+  top: 300px;
+ }
+
+.slick-prev:before,
+.slick-next:before {
+  color: #333 !important;
+}
+
+.thumbnail .slick-current {
+  opacity: 0.5;
+}
+
+.thumbnail .slick-track {
+  transform: unset !important;
+}
+
+.preview-area{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preview-area img{
+  width: 24%;
+  margin: 0 0 10px;
+  object-fit: contain;
+}
+
+.preview-area img:not(:nth-child(4n)){
+  margin-right: 1.333%;
+}

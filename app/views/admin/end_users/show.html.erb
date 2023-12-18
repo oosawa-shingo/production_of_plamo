@@ -1,12 +1,12 @@
 <div class="container my-5">
   <div class="row my-3 offset-1">
     <div class="col-4">
-      <h4><%= @end_user.name %>さんの会員詳細</h4>
+      <h4><<%= @end_user.name %>さんの会員詳細></h4>
     </div>
   </div>
 
-  <div class="row offset-1">
-    <div class="col-6">
+  <div class="row offset-2">
+    <div class="col-6 ">
       <table class="table table-borderless">
         <tr>
           <th>会員ID</th><td><%= @end_user.id %></td>
@@ -28,8 +28,8 @@
           </td>
         </tr>
       </table>
-    <div class="offset-6">
-      <%= link_to "編集する", edit_admin_end_user_path, class: "btn btn-success" %>
+    <div class="col-5 offset-6">
+      <%= link_to "編集する", edit_admin_end_user_path, class: "btn btn-success btn-block" %>
     </div>
     </div>
   </div>

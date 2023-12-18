@@ -1,25 +1,62 @@
-<div>
-  <%= image_tag @post_review.review_item_image, size:"300x300" %>
-  <p>ニックネーム：<%= @post_review.end_user.name %></p>
-  <p>タイトル：<%= @post_review.title %></p>
-  <p>商品名：<%= @post_review.review_item %></p>
-  <p>使ってみた感想：<%= @post_review.feeling %></p>
-  <% if @post_review.usefuld_by?(current_end_user) %>
-    <h6>
-      <%= link_to post_review_usefuls_path(@post_review), method: :delete do %>
-        ♥d(^_^o)<%= @post_review.usefuls.count %> 参考になった
-      <% end %>
-    </h6>
-    <% else %>
-    <h6>
-      <%= link_to post_review_usefuls_path(@post_review), method: :post do %>
-        ♡d(^_^o)<%= @post_review.usefuls.count %> 参考になった
-      <% end %>
-    </h6>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row mx-auto">
+    <div class="col-5">
+      <div class="slider">
+        <% @post_review.review_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+      <div class="thumbnail">
+        <% @post_review.review_images.each do |images| %>
+          <%= image_tag images, class:"img" %>
+        <% end %>
+      </div>
+    </div>
 
-<% if @post_review.end_user == current_end_user %>
-  <%= link_to "編集する", edit_post_review_path, class: "btn btn-success" %>
-  <%= link_to "削除する", post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-<% end %>
+     <div class="col-6 mt-5 ml-5">
+      <div>
+        <% if @post_review.end_user == current_end_user %>
+          <%= link_to "編集する", edit_post_review_path, class: "btn btn-outline-success mr-5" %>
+          <%= link_to "削除する", post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+
+      <table class="table table-borderless">
+        <tr>
+          <th class="table_item_name">ニックネーム</th>
+          <td><%= @post_review.end_user.name %></td>
+        </tr>
+        <tr>
+          <th class="table_item_title">タイトル</th>
+          <td><%= @post_review.title %></td>
+        </tr>
+        <tr>
+          <th class="table_item_item">商品名</th>
+          <td><%= @post_review.review_item %></td>
+        </tr>
+        <tr>
+          <th class="table_item_feeling">使ってみた感想</th>
+        </tr>
+        <tr>
+          <td><%= safe_join(@post_review.feeling.split("\n"),tag(:br)) %></td>
+        </tr>
+      </table>
+
+       <div class="my-3">
+        <% if @post_review.usefuld_by?(current_end_user) %>
+          <h5>
+            <%= link_to post_review_usefuls_path(@post_review), method: :delete do %>
+              ♥d(^_^o)<%= @post_review.usefuls.count %> 参考になった
+            <% end %>
+          </h5>
+        <% else %>
+          <h5>
+            <%= link_to post_review_usefuls_path(@post_review), method: :post do %>
+              ♡d(^_^o)<%= @post_review.usefuls.count %> 参考になった
+            <% end %>
+          </h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

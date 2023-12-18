@@ -13,69 +13,91 @@
       </div>
     </div>
 
-    <div class="col-7">
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>ニックネーム</th>
-            <td><%= @post_plamo.end_user.name %></td>
-          </tr>
-          <tr>
-            <th>タイトル</th>
-            <td><%= @post_plamo.title %></td>
-          </tr>
-          <tr>
-            <th>こだわりポイントや設定 etc</th>
-            <td><%= @post_plamo.introduction %></td>
-          </tr>
-          <tr>
-            <th>タグ</th>
-            <% @post_plamo.tags.each do |tag| %>
+    <div class="col-6 mt-5 ml-5">
+      <div>
+        <% if @post_plamo.end_user == current_end_user %>
+          <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-outline-success mr-5" %>
+          <%= link_to "削除する", post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+        <% end %>
+      </div>
+
+      <table class="table table-borderless">
+        <tr>
+          <th class="table_item_name">ニックネーム</th>
+          <td><%= @post_plamo.end_user.name %></td>
+        </tr>
+        <tr>
+          <th class="table_item_title">タイトル</th>
+          <td><%= @post_plamo.title %></td>
+        </tr>
+        <tr>
+          <th class="table_item_introduction">こだわりポイントや設定 etc</th>
+        </tr>
+        <tr>
+          <td><%= safe_join(@post_plamo.introduction.split("\n"),tag(:br)) %></td>
+        </tr>
+        <tr>
+          <th>タグ</th>
+          <% @post_plamo.tags.each do |tag| %>
             <td><%= tag.tag_name %></td>
-            <% end %>
-          </tr>
-        </tbody>
+          <% end %>
+        </tr>
       </table>
+
+      <div class="my-3">
+        <% if @post_plamo.favorited_by?(current_end_user) %>
+          <h5>
+            <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
+              ♥<%= @post_plamo.favorites.count %> いいね
+            <% end %>
+          </h5>
+        <% else %>
+          <h5>
+            <%= link_to post_plamo_favorites_path(@post_plamo), method: :post do %>
+              ♡<%= @post_plamo.favorites.count %> いいね
+            <% end %>
+          </h5>
+        <% end %>
+      </div>
+      <div><h5>コメント件数：<%= @post_plamo.post_comments.count %></h5></div>
+
+        <% if @post_plamo.favorited_by?(current_end_user) %>
+          <%= form_with model: [@post_plamo, @post_comment] do |f| %>
+            <table>
+              <tr>
+                <th><%= f.text_area :comment, rows: '5', placeholder: "コメントはここに", size: "50" %></th>
+                <td><%= f.submit "コメントする", class: "btn btn-outline-primary" %></td>
+              </tr>
+            </table>
+          <% end %>
+        <% end %>
     </div>
   </div>
 
-  <% if @post_plamo.favorited_by?(current_end_user) %>
-    <h6>
-      <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
-        ♥<%= @post_plamo.favorites.count %> いいね
-      <% end %>
-    </h6>
-    <% else %>
-    <h6>
-      <%= link_to post_plamo_favorites_path(@post_plamo), method: :post do %>
-        ♡<%= @post_plamo.favorites.count %> いいね
-      <% end %>
-    </h6>
-  <% end %>
-
-<% if @post_plamo.end_user == current_end_user %>
-  <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success" %>
-  <%= link_to "削除する", post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-<% end %>
-
-<div>
-  <p>コメント件数：<%= @post_plamo.post_comments.count %></p>
-  <% @post_plamo.post_comments.each do |post_comment| %>
-    <p><%= image_tag post_comment.end_user.get_profile_image, size:"50x50" %></p>
-    <%= post_comment.end_user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-    <% if post_comment.end_user == current_end_user %>
-      <%= link_to "削除", post_plamo_post_comment_path(post_comment.post_plamo, post_comment), method: :delete %>
-    <% end %>
-  <% end %>
-</div>
-
-<% if @post_plamo.favorited_by?(current_end_user) %>
-<div>
-  <%= form_with model: [@post_plamo, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
-<% end %>
+  <div class="row">
+    <div class="col-10">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th>コメント欄</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @post_plamo.post_comments.each do |post_comment| %>
+        <tbody>
+          <tr>
+            <td class="align-middle text-center"><%= image_tag post_comment.end_user.get_profile_image, size:"60x60" %><%= post_comment.end_user.name %></td>
+            <td class="align-middle text-center"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td class="align-middle"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
+            <% if post_comment.end_user == current_end_user %>
+              <td><%= link_to "削除", post_plamo_post_comment_path(post_comment.post_plamo, post_comment), method: :delete, class: "btn btn-outline-danger" %></td>
+            <% end %>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

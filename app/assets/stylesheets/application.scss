@@ -1,48 +1,31 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-.slick-prev {
-  font-size: 50px;
-  position: absolute;
-  z-index: 100;
-  left: -100px;
-  top: 300px;
- }
-
-.slick-next {
-  font-size: 50px;
-  position: absolute;
-  z-index: 100;
-  right: -100px;
-  top: 300px;
- }
-
-.slick-prev:before,
-.slick-next:before {
-  color: #333 !important;
+body {
+  background: linear-gradient(#00bfff, #87cefa, #fffafa) fixed;
 }
 
-.thumbnail .slick-current {
-  opacity: 0.5;
+table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
 }
 
-.thumbnail .slick-track {
-  transform: unset !important;
+.table_item_name, .table_item_title, .table_item_item {
+  width: 50%;
 }
 
-.new-img{
-  width: 400px;
-  object-fit: cover;
+.image_input_btn{
+  display: block;
+  width: 180px;
+  height: 30px;
+  border-radius: 5px;
+  padding-top: 2px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.image_form{
+  display: none;
+}
+
+ul {
+  list-style: none;
 }

@@ -1,56 +1,52 @@
 <div class="container my-5">
   <div class="row my-3 offset-1">
     <div class="col-8">
-      <h4>ログイン</h4>
+      <h4><ログイン></h4>
     </div>
   </div>
 
-<%= form_with model: @end_user, url: end_user_session_path do |f| %>
+  <%= form_with model: @end_user, url: end_user_session_path do |f| %>
 
-<div class="row mx-auto">
-  <div class="col-3 pl-5 offset-1">
-    <P>メールアドレス</P>
+  <div class="row mx-auto">
+    <div class="col-3 pl-5 offset-1">
+      <P>メールアドレス</P>
+    </div>
+
+    <div class="form-floating">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40", placeholder: "sample@example.com" %>
+    </div>
   </div>
 
-  <div class="form-floating">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40", placeholder: "sample@example.com" %>
-  </div>
-</div>
+  <div class="row mx-auto">
+    <div class="col-3 pl-5 offset-1">
+      <p>パスワード</p>
+    </div>
 
-<div class="row mx-auto">
-  <div class="col-3 pl-5 offset-1">
-    <p>パスワード</p>
+    <div class="form-floating">
+      <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+    </div>
   </div>
 
-  <div class="form-floating">
-    <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+  <div class="row">
+    <div class="col-4 pl-1 pr-4 mt-3 mx-auto">
+      <%= f.submit "ログイン", class: "btn btn-outline-primary btn-block" %>
+    </div>
   </div>
-</div>
+  <% end %>
 
-<div class="row">
-  <div class="col-3 mx-auto">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  <div class="row my-5">
+    <div class="col-4 pl-1 pr-4 mt-3 mx-auto">
+      <h5><%= link_to 'ゲストログイン（閲覧用）', end_users_guest_sign_in_path, method: :post, class: "btn btn-primary btn-block" %></h5>
+    </div>
   </div>
-</div>
-<% end %>
 
-<div class="row my-3">
-  <div class="col-8 offset-1">
-    <h5><%= link_to 'ゲストログイン（閲覧用）', end_users_guest_sign_in_path, method: :post, class: "btn btn-primary" %></h5>
-  </div>
-</div>
+  <div class="row my-3">
+    <div class="col-3 pl-0 offset-1">
+      <h5><会員登録がお済みでない方></h5>
+    </div>
 
-<div class="row my-3">
-  <div class="col-8 offset-1">
-    <h5>会員登録がお済みでない方</h5>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-mg-2 pl-5 offset-1">
-    <%= render "public/shared/links" %>
-  </div>
-  <div class="col-4">
-    <p>から新規登録を行なってください。</P>
+    <div class="col-4 pl-1 pr-4">
+      <%= render "public/shared/links" %>
+    </div>
   </div>
 </div>

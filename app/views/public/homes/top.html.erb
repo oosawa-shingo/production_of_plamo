@@ -1,33 +1,16 @@
 <div class="container">
-  <div class="row">
-    <div class="col-3">
-      <h1>新着投稿</h1>
+  <div class="row mt-5">
+    <div class="col-10 mx-auto text-center">
+      <h1>Production of Plamo</h1>
     </div>
   </div>
 
-  <div class="row">
-    <% @post_plamos.each do |post_plamos| %>
-    <div class="col-3">
-    <div class="card-deck my-3">
-    <div class="card text-center pt-2" style="width: 10rem;">
-      <%= link_to post_plamo_path(post_plamos) do %>
-        <%= image_tag post_plamos.get_plamo_images[0], class:"card-imag-top", size:"200x200" %>
-      <% end %>
-
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12">
-          <p class="card-text">
-            <%= post_plamos.title %>
-          </P>
-          <p class="card-text">
-            <%= post_plamos.end_user.name %>
-          </p>
-        </div>
-      </div>
+  <div class="row mt-5">
+    <div class="col-6 mx-auto">
+      <h5>このサイトは自分で制作したプラモデル作品を投稿したり、<br>
+         プラモデル制作に使用した道具などを紹介するサイトです。<br>
+      </h5>
+      <h5 class="text-center">時間の許す限り、楽しんでいってください！！</h5>
     </div>
-    </div>
-    </div>
-    </div>
-    <% end %>
   </div>
+</div>

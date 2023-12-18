@@ -1,8 +1,3 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -12,7 +7,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import "./preview"
 
 Rails.start()
 Turbolinks.start()
@@ -34,29 +28,28 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-$(document).on("turbolinks:load", function () {
-  $(".post_plamo_plamo_images").on("change", function (e) {
-    var files = e.target.files;
-    var d = new $.Deferred().resolve();
-    $.each(files, function (i, file) {
-      d = d.then(function () {
-        return previewImage(file);
-      });
-    });
-  });
+// $(document).on('turbolinks:load', function preview(elem, output = ''){
+//   Array.from(elem.files).map((file) => {
+//     const blobUrl = window.URL.createObjectURL(file)
+//     output+=`<img src=${blobUrl}>`
+//   })
+//   elem.nextElementSibling.innerHTML = output
+// });
 
-  var previewImage = function (imageFile) {
-    var reader = new FileReader();
-    var img = new Image();
-    var def = $.Deferred();
-    reader.onload = function (e) {
-      // 画像を表示
-      $("#image_preview").empty();
-      $("#image_preview").append(img);
-      img.src = e.target.result;
-      def.resolve(img);
-    };
-    reader.readAsDataURL(imageFile);
-    return def.promise();
-  };
-});
+// function imgPreView(event) {
+//   var file = event.target.files[0];
+//   var reader = new FileReader();
+//   var preview = document.getElementById("preview");
+//   var previewImage = document.getElementById("previewImage");
+
+//   if(previewImage != null) {
+//     preview.removeChild(previewImage);
+//   }
+//   reader.onload = function(event) {
+//     var img = document.createElement("img");
+//     img.setAttribute("src", reader.result);
+//     img.setAttribute("id", "previewImage");
+//     preview.appendChild(img);
+//   };
+//   reader.readAsDataURL(file);
+// }

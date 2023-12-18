@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h2>User info</h2>
+    <div class="col-6">
+      <h4><会員情報></h4>
       <%= image_tag @end_user.get_profile_image, size:"200x200" %>
       <table class="table">
         <tbody>
@@ -15,34 +15,20 @@
           </tr>
           <tr>
             <th>自己紹介</th>
-            <td><%= @end_user.introduction %></td>
+            <td><%= safe_join(@end_user.introduction.split("\n"),tag(:br)) %></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="col-md-3">
-      <table class="table">
-        <tbody>
-          <% if @end_user.email != 'guest@example.com' %>
-          <tr>
-            <td><%= link_to "編集する", end_users_my_page_edit_path, class: "btn btn-outline-secondary btn-block" %></td>
-          </tr>
-          <% end %>
-          <tr>
-            <td><%= link_to "投稿一覧をみる", end_users_plamos_path, class: "btn btn-outline-secondary btn-block" %></td>
-          </tr>
-          <tr>
-            <td><%= link_to "レビュー一覧をみる", end_users_reviews_path, class: "btn btn-outline-secondary btn-block" %></td>
-          </tr>
-          <tr>
-            <td><%= link_to "いいね一覧をみる", end_users_my_page_favorites_path, class: "btn btn-outline-secondary btn-block" %></td>
-          </tr>
-          <tr>
-            <td><%= link_to "参考になった一覧をみる", end_users_my_page_usefuls_path, class: "btn btn-outline-secondary btn-block" %></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-3 mt-5">
+      <ul>
+        <li><p><%= link_to "編集する", end_users_my_page_edit_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+        <li><p><%= link_to "投稿一覧をみる", end_users_plamos_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+        <li><p><%= link_to "レビュー一覧をみる", end_users_reviews_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+        <li><p><%= link_to "いいね一覧をみる", end_users_my_page_favorites_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+        <li><p><%= link_to "参考になった一覧をみる", end_users_my_page_usefuls_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+      </ul>
     </div>
   </div>
 </div>

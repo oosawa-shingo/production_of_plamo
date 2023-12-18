@@ -1,72 +1,67 @@
-<div class="container my-5">
+<div class="container mt-5">
   <div class="row my-3 offset-1">
     <div class="col-8">
-      <h4>新規会員登録</h4>
+      <h4><新規会員登録></h4>
     </div>
   </div>
 
-<%= form_with model: @end_user, url: end_user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_with model: @end_user, url: end_user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="row mx-auto">
-    <div class="col-3 offset-3">
+    <div class="col-3 pl-5 offset-1">
       <p>ニックネーム</p>
     </div>
 
     <div class="form-floating">
-      <%= f.text_field :name, placeholder: "令和太郎" %>
+      <%= f.text_field :name, size: "40", placeholder: "令和太郎" %>
     </div>
   </div>
 
   <div class="row mx-auto">
-    <div class="col-3 offset-3">
+    <div class="col-3 pl-5 offset-1">
       <p>メールアドレス</p>
     </div>
 
     <div class="from-floating">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40",  placeholder: "sample@example.com" %>
     </div>
   </div>
 
   <div class="row mx-auto">
-    <div class="col-3 offset-3">
+    <div class="col-3 pl-5 offset-1">
       <P>パスワード(6文字以上)</P>
     </div>
 
     <div class="from-floating">
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, size: "40", autocomplete: "new-password" %>
     </div>
   </div>
 
   <div class="row mx-auto">
-    <div class="col-3 offset-3">
+    <div class="col-3 pl-5 offset-1">
       <p>パスワード(確認用)</p>
     </div>
 
     <div class="from-floating">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, size: "40", autocomplete: "new-password" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-2 offset-5">
+    <div class="col-4 pl-1 pr-4 my-3 mx-auto">
       <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
     </div>
   </div>
-<% end %>
+  <% end %>
 
-  <div class="row my-3">
-    <div class="col-8 offset-1">
-      <h5>既に登録済みの方</h5>
+  <div class="row mt-5">
+    <div class="col-3 offset-1">
+      <h5><既に登録済みの方></h5>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-mg-2 pl-5 offset-1">
+    <div class="col-4 pl-1 pr-4">
       <%= render "public/shared/links" %>
-    </div>
-    <div class="col-3">
-      <p>からログインしてください。</P>
     </div>
   </div>
 </div>

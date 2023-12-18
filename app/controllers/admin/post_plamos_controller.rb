@@ -1,4 +1,7 @@
 class Admin::PostPlamosController < ApplicationController
+  def index
+    @post_plamos = PostPlamo.page(params[:page])
+  end
 
   def show
     @post_plamo = PostPlamo.find(params[:id])
@@ -7,6 +10,6 @@ class Admin::PostPlamosController < ApplicationController
   def destroy
     post_plamo = PostPlamo.find(params[:id])
     post_plamo.destroy
-    redirect_to post_plamos_path
+    redirect_to admin_post_plamos_path
   end
 end

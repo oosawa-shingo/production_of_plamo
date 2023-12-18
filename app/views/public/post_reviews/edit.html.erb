@@ -1,19 +1,52 @@
-<h1>編集画面</h1>
+<div class="container">
+  <div class="row  my-5 offset-1">
+    <div class="col-5">
+      <h4>編集画面</h4>
+    </div>
+  </div>
 
-<%= form_with model: @post_review, url: post_review_path(@post_review.id), method: :patch do |f| %>
+  <%= form_with model: @post_review, url: post_review_path(@post_review.id), method: :patch do |f| %>
+   <div class="row mb-4 mx-auto">
+    <div class="col-3 pl-5 offset-1">
+      <h5>タイトル</h5>
+    </div>
 
-  <h4>画像</h4>
-  <%= f.file_field :review_item_image, accept: "image/*" %>
+    <div class="form-floating offset-1">
+      <%= f.text_field :title, size: "40" %>
+    </div>
+  </div>
 
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
+   <div class="row mb-4 mx-auto">
+    <div class="col-4 pl-5 offset-1">
+      <h5>商品名</h5>
+    </div>
 
-  <h4>商品名</h4>
-  <%= f.text_field :review_item %>
+    <div class="form-floating">
+      <%= f.text_field :review_item, size: "40x8" %>
+    </div>
+  </div>
 
-  <h4>使ってみた感想</h4>
-  <%= f.text_area :feeling %>
+   <div class="row mb-4 mx-auto">
+    <div class="col-4 pl-5 offset-1">
+      <h5>使ってみた感想</h5>
+    </div>
 
-  <%= f.submit '保存' %>
+    <div class="form-floating">
+      <%= f.text_area :feeling, size: "40x8" %>
+    </div>
+  </div>
 
-<% end %>
+  <div class="row mb-4 mx-auto">
+    <div class="col-4 pl-5 offset-1">
+      <h5>画像　※5枚まで投稿できます</h5>
+      <%= f.file_field :review_item_image, accept: "image/*", multiple: true %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 mx-auto">
+      <%= f.submit 'UP DATE', class: "btn btn-outline-success btn-block" %>
+    </div>
+  </div>
+  <% end %>
+</div>

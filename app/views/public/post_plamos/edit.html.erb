@@ -1,25 +1,68 @@
-<h1>編集画面</h1>
+<div class="container">
+  <div class="row  my-5 offset-1">
+    <div class="col-5">
+      <h4>編集画面</h4>
+    </div>
+  </div>
 
-<%= form_with model: @post_plamo, url: post_plamo_path(@post_plamo.id), method: :patch do |f| %>
+  <%= form_with model: @post_plamo, url: post_plamo_path(@post_plamo.id), method: :patch do |f| %>
+  <div class="row mb-4 mx-auto">
+    <div class="col-3 pl-5 offset-1">
+      <h5>タイトル</h5>
+    </div>
 
-  <h4>画像</h4>
-  <%= f.file_field :plamo_image, accept: "image/*" %>
+    <div class="form-floating offset-1">
+      <%= f.text_field :title, size: "40" %>
+    </div>
+  </div>
 
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
+  <div class="row mb-4 mx-auto">
+    <div class="col-4 pl-5 offset-1">
+      <h5>こだわりポイントや設定 etc...</h5>
+    </div>
 
-  <h4>こだわりポイントや設定 etc...</h4>
-  <%= f.text_area :introduction %>
+    <div class="form-floating">
+      <%= f.text_area :introduction, size: "40x8" %>
+    </div>
+  </div>
 
-  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
-    <div class="form-check form-check-inline flex flex-wrap">
-      <%= tag.label do %>
-        <%= tag.check_box %>
-        <%= tag.text %>
+  <div class="row mb-4 mx-auto">
+    <div class="col-3 pl-5 mb-4 offset-1">
+      <h5>タグ</h5>
+    </div>
+
+    <div class="form-floating offset-1">
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :tag_name) do |tag| %>
+        <div class="form-check form-check-inline flex flex-wrap">
+          <%= tag.label do %>
+            <%= tag.check_box %>
+            <%= tag.text %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 
-  <%= f.submit '保存' %>
+  <div class="row mb-4 mx-auto">
+    <div class="col-4 pl-5 offset-1">
+      <h5>画像　※８枚まで投稿できます</h5>
+      <%= f.file_field :plamo_images, accept: "image/*", multiple: true %>
+    </div>
 
-<% end %>
+
+    <!--<input type="file" accept='image/*' multiple="multiple" onchange="imgPreView(event)">-->
+    <!--<div class="preview-area"></div>-->
+
+    <!--<div class="form-floating">-->
+    <!--  <#%= f.label :plamo_images, "画像をアップロード", class: "image_input_btn btn-primary" %>-->
+    <!--  <#%= f.file_field :plamo_images, accept: "image/*", multiple: true, class: "image_form" %>-->
+    <!--</div>-->
+  </div>
+
+  <div class="row">
+    <div class="col-3 mx-auto">
+      <%= f.submit "UP DATE", class: "btn btn-outline-success btn-block" %>
+    </div>
+  </div>
+    <% end %>
+</div>

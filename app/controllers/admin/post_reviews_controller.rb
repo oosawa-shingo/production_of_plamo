@@ -4,7 +4,7 @@ class Admin::PostReviewsController < ApplicationController
   end
 
   def show
-     @post_review = PostReview.find(params[:id])
+    @post_review = PostReview.find(params[:id])
   end
 
   def destroy
