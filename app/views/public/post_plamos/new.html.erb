@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row  my-5 offset-1">
     <div class="col-5">
-      <h4>新規投稿</h4>
+      <h4><新規投稿></h4>
     </div>
   </div>
 
@@ -53,9 +53,15 @@
   </div>
 
   <div class="row mb-4 mx-auto">
-    <div class="col-4 pl-5 offset-1">
+    <div class="col-11 pl-5 offset-1">
       <h5>画像　※８枚まで投稿できます</h5>
-      <%= f.file_field :plamo_images, accept: "image/*", multiple: true %>
+        <div class="form-group">
+            <%= f.file_field :plamo_images, accept: "image/*", multiple: true %>
+        </div>
+
+        <div id="new-images">
+          <div id="new-image-files"></div>
+        </div>
     </div>
   </div>
 
