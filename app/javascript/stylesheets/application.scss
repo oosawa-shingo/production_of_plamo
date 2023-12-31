@@ -29,6 +29,12 @@
   transform: unset !important;
 }
 
+.slider {
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+}
+
 .preview-area{
   display: flex;
   flex-wrap: wrap;

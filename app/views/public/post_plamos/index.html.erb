@@ -40,10 +40,7 @@
                   <%= post_plamos.title %>
                 </P>
                 <p class="card-text text-left">
-                  <!--<#%= link_to "/end_users/my_page#{post_plamos.end_user.id}" do %>-->
-                  <%= link_to "/end_users/my_page." do %>
-                    <%= image_tag post_plamos.end_user.get_profile_image, size: "50x50", class:"mr-3 rounded-circle"; %><%= post_plamos.end_user.name %>
-                  <% end %>
+                  <%= image_tag post_plamos.end_user.get_profile_image, size: "50x50", class:"mr-3 rounded-circle"; %><%= post_plamos.end_user.name %>
                 </p>
               </div>
             </div>
