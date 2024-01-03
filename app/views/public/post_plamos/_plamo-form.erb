@@ -1,0 +1,22 @@
+<table class="table table-borderless">
+  <tr>
+    <th class="table_item_name">ニックネーム</th>
+    <td><%= post_plamo.end_user.name %></td>
+  </tr>
+  <tr>
+    <th class="table_item_title">タイトル</th>
+    <td><%= post_plamo.title %></td>
+  </tr>
+  <tr>
+    <th class="table_item_introduction">こだわりポイントや設定 etc</th>
+  </tr>
+  <tr>
+    <td><%= safe_join(post_plamo.introduction.split("\n"),tag(:br)) %></td>
+  </tr>
+  <tr>
+    <th>タグ</th>
+    <% post_plamo.tags.each do |tag| %>
+      <td><%= tag.tag_name %></td>
+    <% end %>
+  </tr>
+</table>

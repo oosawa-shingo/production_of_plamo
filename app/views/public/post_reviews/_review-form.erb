@@ -1,0 +1,20 @@
+<table class="table table-borderless">
+  <tr>
+    <th class="table_item_name">ニックネーム</th>
+    <td><%= post_review.end_user.name %></td>
+  </tr>
+  <tr>
+    <th class="table_item_title">タイトル</th>
+    <td><%= post_review.title %></td>
+  </tr>
+  <tr>
+    <th class="table_item_item">商品名</th>
+    <td><%= post_review.review_item %></td>
+  </tr>
+  <tr>
+    <th class="table_item_feeling">使ってみた感想</th>
+    </tr>
+  <tr>
+    <td><%= safe_join(post_review.feeling.split("\n"),tag(:br)) %></td>
+  </tr>
+</table>

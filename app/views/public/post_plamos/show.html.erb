@@ -1,17 +1,7 @@
 <div class="container">
   <div class="row mx-auto">
-    <div class="col-5">
-      <div class="slider">
-        <% @post_plamo.plamo_images.each do |images| %>
-          <%= image_tag images, class:"img" %>
-        <% end %>
-      </div>
-      <div class="thumbnail">
-        <% @post_plamo.plamo_images.each do |images| %>
-          <%= image_tag images, class:"img" %>
-        <% end %>
-      </div>
-    </div>
+
+  <%= render 'plamoimage-slider', post_plamo: @post_plamo %>
 
     <div class="col-6 mt-5 ml-5">
       <div>
@@ -21,28 +11,7 @@
         <% end %>
       </div>
 
-      <table class="table table-borderless">
-        <tr>
-          <th class="table_item_name">ニックネーム</th>
-          <td><%= @post_plamo.end_user.name %></td>
-        </tr>
-        <tr>
-          <th class="table_item_title">タイトル</th>
-          <td><%= @post_plamo.title %></td>
-        </tr>
-        <tr>
-          <th class="table_item_introduction">こだわりポイントや設定 etc</th>
-        </tr>
-        <tr>
-          <td><%= safe_join(@post_plamo.introduction.split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <th>タグ</th>
-          <% @post_plamo.tags.each do |tag| %>
-            <td><%= tag.tag_name %></td>
-          <% end %>
-        </tr>
-      </table>
+       <%= render 'plamo-form', post_plamo: @post_plamo %>
 
       <div class="my-3">
         <% if @post_plamo.favorited_by?(current_end_user) %>
