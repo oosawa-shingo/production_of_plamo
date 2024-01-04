@@ -37,9 +37,13 @@
   </div>
 
   <div class="row mb-4 mx-auto">
-    <div class="col-4 pl-5 offset-1">
+    <div class="col-11 pl-5 offset-1">
       <h5>画像　※5枚まで投稿できます</h5>
       <%= f.file_field :review_images, accept: "image/*", multiple: true %>
+
+      <div id="new-review-images">
+        <div id="new-review-image-files"></div>
+      </div>
     </div>
   </div>
 

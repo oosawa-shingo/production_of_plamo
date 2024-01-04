@@ -1,6 +1,6 @@
 class Admin::PostPlamosController < ApplicationController
   def index
-    @post_plamos = PostPlamo.page(params[:page])
+    @post_plamos = PostPlamo.page(params[:page]).per(10)
   end
 
   def show

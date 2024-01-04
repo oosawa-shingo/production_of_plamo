@@ -1,4 +1,5 @@
 class Public::EndUsersController < ApplicationController
+  before_action :ensure_normal_user, only: :update
   def show
     @end_user = EndUser.find(current_end_user.id)
   end
@@ -52,5 +53,11 @@ class Public::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(:name, :introduction, :profile_image, :email)
+  end
+
+  def ensure_normal_user
+    if current_end_user.email == 'guest@example.com'
+      redirect_to post_plamos_path, alert: 'ゲストユーザーの更新はできません。'
+    end
   end
 end

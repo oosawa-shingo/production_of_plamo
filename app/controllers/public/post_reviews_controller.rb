@@ -7,8 +7,10 @@ class Public::PostReviewsController < ApplicationController
     @post_review = PostReview.new(post_review_params)
     @post_review.end_user_id = current_end_user.id
     if @post_review.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to post_reviews_path
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -24,11 +26,11 @@ class Public::PostReviewsController < ApplicationController
   end
 
   def index
-    @post_reviews = PostReview.all
+    @post_reviews = PostReview.page(params[:page]).per(8)
     if params[:keyword]
       @post_reviews = @post_reviews.search(params[:keyword]).page(params[:page])
     else
-      @post_reviews = @post_reviews.page(params[:page])
+      @post_reviews = @post_reviews.page(params[:page]).per(8)
     end
     @keyword = params[:keyword]
   end

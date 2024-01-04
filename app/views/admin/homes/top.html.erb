@@ -1,4 +1,10 @@
 <div class="container my-5">
+  <div class="row">
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
+
   <div class="row my-3 offset-1">
     <div class="col-4">
       <h4><投稿・コメント一覧></h4>
@@ -33,7 +39,7 @@
   </div>
 
   <div class="row">
-    <div class="col-1 mx-auto">
+    <div class="col-3 mx-auto">
       <%= paginate @post_plamos %>
     </div>
   </div>

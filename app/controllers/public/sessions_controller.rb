@@ -1,6 +1,6 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :end_user_state, only: [:create]
+  before_action :end_user_state, only: :create
 
   def after_sign_in_path_for(resource)
     post_plamos_path
@@ -8,6 +8,12 @@ class Public::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resource)
     root_path
+  end
+
+  def guest_sign_in
+    end_user = EndUser.guest
+    sign_in end_user
+    redirect_to post_plamos_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   protected
@@ -26,11 +32,5 @@ class Public::SessionsController < Devise::SessionsController
         redirect_to new_end_user_registration_path
       end
     end
-  end
-
-  def guest_sign_in
-    end_user = EndUser.guest
-    sign_in end_user
-    redirect_to post_plamos_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 end

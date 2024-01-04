@@ -1,5 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 
+// 画像スライドの矢印
 .slick-prev {
   font-size: 50px;
   position: absolute;
@@ -21,6 +22,7 @@
   color: #333 !important;
 }
 
+// スライドの選択されている画像サブネイル表示
 .thumbnail .slick-current {
   opacity: 0.5;
 }
@@ -29,12 +31,14 @@
   transform: unset !important;
 }
 
+// スライドのサイズ
 .slider {
   width: 450px;
   height: 450px;
   object-fit: cover;
 }
 
+// 画像投稿時のプレビュー
 .preview-area{
   display: flex;
   flex-wrap: wrap;

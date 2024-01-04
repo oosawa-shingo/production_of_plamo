@@ -1,11 +1,14 @@
-# frozen_string_literal: true
-
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: :update
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to post_plamos_path, alert: 'ゲストユーザーの更新はできません。'
-    end
+  def after_sign_up_path_for(resource)
+    post_plamos_path
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
 end

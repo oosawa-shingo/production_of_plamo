@@ -7,8 +7,10 @@ class Public::PostPlamosController < ApplicationController
     @post_plamo = PostPlamo.new(post_plamo_params)
     @post_plamo.end_user_id = current_end_user.id
     if @post_plamo.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to post_plamos_path
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
   end
@@ -24,7 +26,7 @@ class Public::PostPlamosController < ApplicationController
   end
 
   def index
-    @post_plamos = PostPlamo.all
+    @post_plamos = PostPlamo.page(params[:page]).per(8)
     if params[:new_post_plamo]
       @post_plamos = PostPlamo.new_post
     elsif params[:old_post_plamo]
@@ -35,7 +37,7 @@ class Public::PostPlamosController < ApplicationController
     if params[:keyword]
       @post_plamos = @post_plamos.search(params[:keyword]).page(params[:page])
     else
-      @post_plamos = @post_plamos.page(params[:page])
+      @post_plamos = @post_plamos.page(params[:page]).per(8)
     end
     @keyword = params[:keyword]
   end

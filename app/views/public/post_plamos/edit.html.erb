@@ -5,6 +5,7 @@
     </div>
   </div>
 
+<!--投稿されている内容を編集-->
   <%= form_with model: @post_plamo, url: post_plamo_path(@post_plamo.id), method: :patch do |f| %>
   <div class="row mb-4 mx-auto">
     <div class="col-3 pl-5 offset-1">
@@ -44,9 +45,13 @@
   </div>
 
   <div class="row mb-4 mx-auto">
-    <div class="col-4 pl-5 offset-1">
+    <div class="col-11 pl-5 offset-1">
       <h5>画像　※８枚まで投稿できます</h5>
       <%= f.file_field :plamo_images, accept: "image/*", multiple: true %>
+
+      <div id="new-plamo-images">
+        <div id="new-plamo-image-files"></div>
+      </div>
     </div>
   </div>
 

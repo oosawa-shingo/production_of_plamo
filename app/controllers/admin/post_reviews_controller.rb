@@ -1,6 +1,6 @@
 class Admin::PostReviewsController < ApplicationController
   def index
-    @post_reviews = PostReview.page(params[:page])
+    @post_reviews = PostReview.page(params[:page]).per(10)
   end
 
   def show

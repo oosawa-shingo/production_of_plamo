@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="row">
     <div class="col-3 ml-5">
       <h1>NEW PLAMO</h1>
     </div>
@@ -49,5 +54,10 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div class="row">
+    <div class="col-3 mx-auto">
+      <%= paginate @post_plamos %>
+    </div>
   </div>
 </div>
