@@ -20,25 +20,25 @@
     </div>
   </div>
 
-  <div class="row offset-1 mt-3">
-    <% @post_plamos.first(3). each do |post_plamos| %>
-    <div class="col-3 mx-3">
-      <div class="card-deck my-3">
-        <div class="card text-center pt-2" style="width: 10rem;">
-          <a><%= image_tag post_plamos.get_plamo_images[0], class:"card-imag-top", size:"200x200" %></a>
+  <!--<div class="row offset-1 mt-3">-->
+  <!--  <#% @post_plamos.first(3). each do |post_plamos| %>-->
+  <!--  <div class="col-3 mx-3">-->
+  <!--    <div class="card-deck my-3">-->
+  <!--      <div class="card text-center pt-2" style="width: 10rem;">-->
+  <!--        <a><#%= image_tag post_plamos.get_plamo_images[0], class:"card-imag-top", size:"200x200" %></a>-->
 
-          <div class="card-body">
-            <div class="row">
-              <div class="col-10 mx-auto">
-                <p class="card-text text-left">
-                  <%= post_plamos.title %>
-                </P>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
+  <!--        <div class="card-body">-->
+  <!--          <div class="row">-->
+  <!--            <div class="col-10 mx-auto">-->
+  <!--              <p class="card-text text-left">-->
+  <!--                <#%= post_plamos.title %>-->
+  <!--              </P>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <#% end %>-->
+  <!--</div>-->
 </div>
