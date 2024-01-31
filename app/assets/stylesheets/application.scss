@@ -1,5 +1,12 @@
+// body {
+//   background-image: image-url('background_sample2.jpeg');
+//   background-size: cover;
+//   background-position: top;
+//   background-color: rgba( 255, 255, 128, 0.5);
+// }
+
 // 全体の背景色（グラデーション）
-body {
+header {
   background: linear-gradient(#00bfff, #87cefa, #fffafa) fixed;
 }
 
