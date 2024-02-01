@@ -27,59 +27,59 @@
         <% if end_user_signed_in? %>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-3">
-              <%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "btn btn-outline-secondary" %>
+              <%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "btn btn-outline-light" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-secondary" %>
+              <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-secondary" %>
+              <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
             </li>
 
             <li class="nav-item mr-3">
-              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-outline-light" %>
             </li>
         <!--管理者がログインした時-->
         <% elsif admin_signed_in? %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mr-3">
-                <%= link_to "投稿一覧", admin_post_plamos_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "投稿一覧", admin_post_plamos_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "レビュー一覧", admin_post_reviews_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "レビュー一覧", admin_post_reviews_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "会員一覧", admin_end_users_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "会員一覧", admin_end_users_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "タグ一覧", admin_tags_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "タグ一覧", admin_tags_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %>
               </li>
         <!--未ログイン時-->
         <%  else %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item mr-3">
-                <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-outline-light" %>
               </li>
 
               <li class="nav-item mr-3">
-                <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-outline-secondary" %>
+                <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-outline-light" %>
               </li>
         <% end %>
         </div>
