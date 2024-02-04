@@ -30,7 +30,7 @@
   </div>
 
   <div class="row">
-    <% @post_plamos.each do |post_plamos| %>
+    <% @post_plamos.order(created_at: :desc).each do |post_plamos| %>
     <div class="col-3">
       <div class="card-deck my-3">
         <div class="card text-center pt-2" style="width: 10rem;">

@@ -21,7 +21,7 @@
   </div>
 
   <div class="row">
-    <% @post_reviews.each do |post_reviews| %>
+    <% @post_reviews.order(created_at: :desc).each do |post_reviews| %>
     <div class="col-3">
       <div class="card-deck my-3">
         <div class="card text-center pt-2" style="width: 10rem;">
