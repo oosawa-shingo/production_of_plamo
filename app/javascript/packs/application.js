@@ -23,9 +23,24 @@ $(document).ready(function(){
 		nextArrow: '<div class="slick-next"></div>',
 		asNavFor: ".thumbnail",
   });
+
   $(".thumbnail").slick({
     slidesToShow: 8,
     asNavFor: ".slider",
     focusOnSelect: true,
   });
+
+  // $('.top-slider').slick({
+  //   autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   speed: 500,
+  //   infinite: true,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 1,
+  //   centerMode: true,
+  //   arrows: false,
+  //   variableWidth: true,
+  //   dots: false,
+  // });
+
 });

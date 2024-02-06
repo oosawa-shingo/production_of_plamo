@@ -1,27 +1,25 @@
-// body {
-//   background-image: image-url('background_sample2.jpeg');
-//   background-size: cover;
-//   background-position: top;
-//   position: relative;
-// }
+body {
+  background-image: image-url('background_sample2.jpeg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
 
-// body::before {
-//   content: '';
-//   /* ↓暗いオーバーレイを半透明で配置 */
-//   background-color: rgba(0, 0, 0, 0.4);
-//   /* ↓全体を覆うように配置 */
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   display: block;
-// }
+body::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: block;
+}
 
 // 全体の背景色（グラデーション）
-body {
-  background: linear-gradient(#00bfff, #87cefa, #fffafa) fixed;
-}
+// body {
+//   background: linear-gradient(#00bfff, #87cefa, #fffafa) fixed;
+// }
 
 // テーブルリストの白線やサイズ
 table tr {
