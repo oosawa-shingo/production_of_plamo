@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container text-white">
   <div class="row">
     <div class="col-6">
       <h4><会員情報></h4>
       <%= image_tag @end_user.get_profile_image, size:"200x200" %>
-      <table class="table">
+      <table class="table text-white">
         <tbody>
           <tr>
             <th>ニックネーム</th>
@@ -27,11 +27,11 @@
 
     <div class="col-3 mt-5">
       <ul>
-        <li><p><%= link_to "編集する", end_users_my_page_edit_path, class: "btn btn-outline-secondary btn-block" %></p></li>
-        <li><p><%= link_to "投稿一覧をみる", end_users_plamos_path, class: "btn btn-outline-secondary btn-block" %></p></li>
-        <li><p><%= link_to "レビュー一覧をみる", end_users_reviews_path, class: "btn btn-outline-secondary btn-block" %></p></li>
-        <li><p><%= link_to "いいね一覧をみる", end_users_my_page_favorites_path, class: "btn btn-outline-secondary btn-block" %></p></li>
-        <li><p><%= link_to "参考になった一覧をみる", end_users_my_page_usefuls_path, class: "btn btn-outline-secondary btn-block" %></p></li>
+        <li><p><%= link_to "編集する", end_users_my_page_edit_path, class: "btn btn-outline-light btn-block" %></p></li>
+        <li><p><%= link_to "投稿一覧をみる", end_users_plamos_path, class: "btn btn-outline-light btn-block" %></p></li>
+        <li><p><%= link_to "レビュー一覧をみる", end_users_reviews_path, class: "btn btn-outline-light btn-block" %></p></li>
+        <li><p><%= link_to "いいね一覧をみる", end_users_my_page_favorites_path, class: "btn btn-outline-light btn-block" %></p></li>
+        <li><p><%= link_to "参考になった一覧をみる", end_users_my_page_usefuls_path, class: "btn btn-outline-light btn-block" %></p></li>
       </ul>
     </div>
   </div>
