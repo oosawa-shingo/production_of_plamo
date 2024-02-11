@@ -13,79 +13,83 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
-  <body>
-    <header>
-     <!--ヘッダーのリンク-->
-      <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand.p-3" href="/"><h1>Production of Plamo</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <!--会員がログインした時-->
-        <% if end_user_signed_in? %>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-3">
-              <%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "btn btn-outline-light" %>
-            </li>
+  <div class="bg-image">
+    <div class="filter">
+      <body>
+        <header>
+         <!--ヘッダーのリンク-->
+          <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a class="navbar-brand.p-3" href="/"><h1>Production of Plamo</h1></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <!--会員がログインした時-->
+            <% if end_user_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-3">
+                  <%= link_to "マイページ", end_users_my_page_path(current_end_user.id), class: "btn btn-outline-light" %>
+                </li>
 
-            <li class="nav-item mr-3">
-              <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
-            </li>
+                <li class="nav-item mr-3">
+                  <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
+                </li>
 
-            <li class="nav-item mr-3">
-              <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
-            </li>
+                <li class="nav-item mr-3">
+                  <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
+                </li>
 
-            <li class="nav-item mr-3">
-              <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-outline-light" %>
-            </li>
-        <!--管理者がログインした時-->
-        <% elsif admin_signed_in? %>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3">
-                <%= link_to "投稿一覧", admin_post_plamos_path, class: "btn btn-outline-light" %>
-              </li>
+                <li class="nav-item mr-3">
+                  <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "btn btn-outline-light" %>
+                </li>
+            <!--管理者がログインした時-->
+            <% elsif admin_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item mr-3">
+                    <%= link_to "投稿一覧", admin_post_plamos_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "レビュー一覧", admin_post_reviews_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "レビュー一覧", admin_post_reviews_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "会員一覧", admin_end_users_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "会員一覧", admin_end_users_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "タグ一覧", admin_tags_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "タグ一覧", admin_tags_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %>
-              </li>
-        <!--未ログイン時-->
-        <%  else %>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3">
-                <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %>
+                  </li>
+            <!--未ログイン時-->
+            <%  else %>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item mr-3">
+                    <%= link_to "投稿一覧", post_plamos_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "レビュー一覧", post_reviews_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-outline-light" %>
-              </li>
+                  <li class="nav-item mr-3">
+                    <%= link_to "新規登録", new_end_user_registration_path, class: "btn btn-outline-light" %>
+                  </li>
 
-              <li class="nav-item mr-3">
-                <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-outline-light" %>
-              </li>
-        <% end %>
-        </div>
-      </div>
-      </nav>
-    </header>
-    <%= yield %>
-  </body>
+                  <li class="nav-item mr-3">
+                    <%= link_to "ログイン", new_end_user_session_path, class: "btn btn-outline-light" %>
+                  </li>
+            <% end %>
+            </div>
+          </div>
+          </nav>
+        </header>
+        <%= yield %>
+      </body>
+    </div>
+  </div>
 </html>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-white">
   <div class="row mx-auto">
 
   <%= render 'plamoimage-slider', post_plamo: @post_plamo %>
@@ -6,14 +6,14 @@
     <div class="col-6 mt-5 ml-5">
       <div>
         <% if @post_plamo.end_user == current_end_user %>
-          <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-outline-success mr-5" %>
-          <%= link_to "削除する", post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+          <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success mr-5" %>
+          <%= link_to "削除する", post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
         <% end %>
       </div>
 
        <%= render 'plamo-form', post_plamo: @post_plamo %>
 
-      <div class="my-3">
+      <div class="my-3 text-white">
         <% if @post_plamo.favorited_by?(current_end_user) %>
           <h5>
             <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
@@ -35,7 +35,7 @@
             <table>
               <tr>
                 <th><%= f.text_area :comment, rows: '5', placeholder: "コメントはここに", size: "50" %></th>
-                <td><%= f.submit "コメントする", class: "btn btn-outline-primary" %></td>
+                <td><%= f.submit "コメントする", class: "btn btn-primary" %></td>
               </tr>
             </table>
           <% end %>
@@ -45,7 +45,7 @@
 
   <div class="row">
     <div class="col-10">
-      <table class="table table-borderless">
+      <table class="table table-borderless text-white">
         <thead>
           <tr>
             <th>コメント欄</th>
@@ -61,7 +61,7 @@
             <td class="align-middle text-center"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
             <td class="align-middle"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
             <% if post_comment.end_user == current_end_user %>
-              <td><%= link_to "削除", post_plamo_post_comment_path(post_comment.post_plamo, post_comment), method: :delete, class: "btn btn-outline-danger" %></td>
+              <td><%= link_to "削除", post_plamo_post_comment_path(post_comment.post_plamo, post_comment), method: :delete, class: "btn btn-danger" %></td>
             <% end %>
           </tr>
         </tbody>

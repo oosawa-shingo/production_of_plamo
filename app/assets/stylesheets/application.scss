@@ -1,20 +1,33 @@
-body {
+.bg-image {
+  width: 100%;
+  height: 100vh;
   background-image: image-url('background_sample2.jpeg');
   background-size: cover;
+  background-attachment: fixed;
   background-position: top;
   position: relative;
 }
 
-body::before {
-  content: '';
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
+.filter {
   width: 100%;
-  height: 100vh;
-  display: block;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  overflow-y: scroll;
 }
+
+// .bg-image::before {
+//   content: '';
+//   background-color: rgba(0, 0, 0, 0.4);
+//   background-size: cover;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100vh;
+//   display: block;
+// }
 
 // 全体の背景色（グラデーション）
 // body {
@@ -29,10 +42,6 @@ table tr {
 
 .table_item_name, .table_item_title, .table_item_item {
   width: 50%;
-}
-
-table {
-  color: white;
 }
 
 // リストの黒丸をなしに
