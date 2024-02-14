@@ -6,8 +6,8 @@
      <div class="col-6 mt-5 ml-5">
       <div>
         <% if @post_review.end_user == current_end_user %>
-          <%= link_to "編集する", edit_post_review_path, class: "btn btn-outline-success mr-5" %>
-          <%= link_to "削除する", post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+          <%= link_to "編集する", edit_post_review_path, class: "btn btn-success mr-5" %>
+          <%= link_to "削除する", post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
         <% end %>
       </div>
 
@@ -17,13 +17,13 @@
         <% if @post_review.usefuld_by?(current_end_user) %>
           <h5>
             <%= link_to post_review_usefuls_path(@post_review), method: :delete do %>
-              ♥d(^_^o)<%= @post_review.usefuls.count %> 参考になった
+              <p>♥d(^_^o)<%= @post_review.usefuls.count %> 参考になった</p>
             <% end %>
           </h5>
         <% else %>
           <h5>
             <%= link_to post_review_usefuls_path(@post_review), method: :post do %>
-              ♡d(^_^o)<%= @post_review.usefuls.count %> 参考になった
+              <p>♡d(^_^o)<%= @post_review.usefuls.count %> 参考になった</p>
             <% end %>
           </h5>
         <% end %>

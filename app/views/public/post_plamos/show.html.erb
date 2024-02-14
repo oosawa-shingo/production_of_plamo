@@ -13,17 +13,17 @@
 
        <%= render 'plamo-form', post_plamo: @post_plamo %>
 
-      <div class="my-3 text-white">
+      <div class="my-3">
         <% if @post_plamo.favorited_by?(current_end_user) %>
           <h5>
             <%= link_to post_plamo_favorites_path(@post_plamo), method: :delete do %>
-              ♥<%= @post_plamo.favorites.count %> いいね
+              <p>♥<%= @post_plamo.favorites.count %> いいね</p>
             <% end %>
           </h5>
         <% else %>
           <h5>
             <%= link_to post_plamo_favorites_path(@post_plamo), method: :post do %>
-              ♡<%= @post_plamo.favorites.count %> いいね
+              <p>♡<%= @post_plamo.favorites.count %> いいね</p>
             <% end %>
           </h5>
         <% end %>
