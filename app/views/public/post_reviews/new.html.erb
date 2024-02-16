@@ -3,17 +3,7 @@
     <div class="col-5">
       <h4><新規レビュー></h4>
     </div>
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    <% if @post_review.errors.any? %>
-      <%= @post_review.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @post_review.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render 'public/post_plamos/error-message', post_plamo: @post_review %>
   </div>
 
   <%= form_with model: @post_review do |f| %>
@@ -60,7 +50,7 @@
 
   <div class="row">
     <div class="col-3 mx-auto">
-      <%= f.submit 'POST', class: "btn btn-outline-primary btn-block" %>
+      <%= f.submit 'REVIEW', class: "btn btn-primary btn-block" %>
     </div>
   </div>
   <% end %>

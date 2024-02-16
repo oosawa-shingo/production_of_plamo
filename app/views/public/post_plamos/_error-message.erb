@@ -1,0 +1,11 @@
+<% flash.each do |message_type, message| %>
+  <div class="flash-message <%= message_type %>"><%= message %></div>
+<% end %>
+  <% if post_plamo.errors.any? %>
+    <%= post_plamo.errors.count %>件のエラーが発生しました
+      <ul>
+        <% post_plamo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
