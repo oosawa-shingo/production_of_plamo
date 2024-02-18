@@ -1,4 +1,5 @@
 class Public::PostReviewsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:index]
   def new
     @post_review = PostReview.new
   end

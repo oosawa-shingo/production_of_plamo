@@ -17,10 +17,10 @@
           </tr>
         </thead>
         <tbody>
-        <% @post_plamos.each do |post_plamo| %>
+        <% @post_plamos.order(created_at: :desc).each do |post_plamo| %>
           <td>
             <%= link_to admin_post_plamo_path(post_plamo) do %>
-              <%= post_plamo.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+              <p><%= post_plamo.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
             <% end %>
           </td>
           <td><%= post_plamo.end_user.name %></td>

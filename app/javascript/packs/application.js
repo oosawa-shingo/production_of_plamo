@@ -7,7 +7,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
-import './preview';
+import './plamo-post-preview';
+import './review-post-preview';
 
 Rails.start()
 //Turbolinks.start()

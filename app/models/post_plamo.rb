@@ -8,9 +8,14 @@ class PostPlamo < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
+  FILE_NUMBER_LIMIT = 8
+
   validates :title, presence: true
   validates :introduction, presence: true
   validates :plamo_images, presence: true
+  validates :tags, presence: true
+
+  validate :validate_number_of_files
 
   def get_plamo_images
     unless plamo_images.attached?
@@ -26,6 +31,13 @@ class PostPlamo < ApplicationRecord
 
   def favorited_by?(end_user)
     favorites.exists?(end_user_id: end_user.id)
+  end
+
+  private
+
+  def validate_number_of_files
+    return if plamo_images.length <= FILE_NUMBER_LIMIT
+    errors.add(:plamo_images, "添付できる画像は#{FILE_NUMBER_LIMIT}枚までです。")
   end
 
 end

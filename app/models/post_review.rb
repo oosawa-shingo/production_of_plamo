@@ -5,10 +5,14 @@ class PostReview < ApplicationRecord
 
    has_many :usefuls, dependent: :destroy
 
+   FILE_NUMBER_LIMIT = 5
+
    validates :title, presence: true
    validates :review_item, presence: true
    validates :feeling, presence: true
    validates :review_images, presence: true
+
+   validate :validate_number_of_files
 
    def get_review_images
      unless review_images.attached?
@@ -25,4 +29,11 @@ class PostReview < ApplicationRecord
    def usefuld_by?(end_user)
      usefuls.exists?(end_user_id: end_user.id)
    end
+
+   private
+
+  def validate_number_of_files
+    return if review_images.length <= FILE_NUMBER_LIMIT
+    errors.add(:review_images, "添付できる画像は#{FILE_NUMBER_LIMIT}枚までです。")
+  end
 end

@@ -1,4 +1,5 @@
 class Public::PostPlamosController < ApplicationController
+  before_action :authenticate_end_user!, except: [:index]
   def new
     @post_plamo = PostPlamo.new
   end
