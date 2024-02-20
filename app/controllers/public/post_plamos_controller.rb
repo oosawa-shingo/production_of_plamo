@@ -1,5 +1,6 @@
 class Public::PostPlamosController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
+  before_action :is_matching_login_user, only: [:edit, :update]
   def new
     @post_plamo = PostPlamo.new
   end
@@ -58,5 +59,12 @@ class Public::PostPlamosController < ApplicationController
 
   def post_plamo_params
     params.require(:post_plamo).permit(:title, :introduction, plamo_images: [], tag_ids: [])
+  end
+
+  def is_matching_login_user
+    end_user = EndUser.find(params[:id])
+    unless end_user.id == current_end_user.id
+      redirect_to post_plamos_path
+    end
   end
 end

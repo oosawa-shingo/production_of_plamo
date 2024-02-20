@@ -1,5 +1,6 @@
 class Public::PostReviewsController < ApplicationController
   before_action :authenticate_end_user!, except: [:index]
+  before_action :is_matching_login_user, only: [:edit, :update]
   def new
     @post_review = PostReview.new
   end
@@ -50,5 +51,12 @@ class Public::PostReviewsController < ApplicationController
 
   def post_review_params
     params.require(:post_review).permit(:title, :review_item, :feeling, review_images: [])
+  end
+
+  def is_matching_login_user
+    end_user = EndUser.find(params[:id])
+    unless end_user.id == current_end_user.id
+      redirect_to post_reviews_path
+    end
   end
 end
