@@ -4,6 +4,7 @@
       <div class="flash-message <%= message_type %>"><%= message %></div>
     <% end %>
   </div>
+
   <div class="row">
     <div class="col-3 text-white">
       <h1>NEW REVIEW</h1>
@@ -44,7 +45,7 @@
                   <%= image_tag post_reviews.end_user.get_profile_image, size: "50x50", class:"mr-3 rounded-circle"; %><%= post_reviews.end_user.name %>
                 </p>
                 <p class="card-text text-left">
-                  <%= post_reviews.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+                  <%= post_reviews.created_at.strftime("%Y/%m/%d %H:%M") %>
                 </p>
               </div>
             </div>
