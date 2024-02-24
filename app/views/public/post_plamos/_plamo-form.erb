@@ -5,18 +5,21 @@
   </tr>
   <tr>
     <th class="table_item_title">タイトル</th>
-    <td><%= post_plamo.title %></td>
+    <td nowrap><%= post_plamo.title %></td>
   </tr>
   <tr>
     <th class="table_item_introduction">こだわりポイントや設定 etc</th>
   </tr>
   <tr>
-    <td><%= safe_join(post_plamo.introduction.split("\n"),tag(:br)) %></td>
+    <!--<td><%#= safe_join(post_plamo.introduction.split("\n"),tag(:br)) %></td>-->
+    <td nowrap><%= post_plamo.introduction %></td>
   </tr>
   <tr>
     <th>タグ</th>
+  </tr>
+  <tr>
     <% post_plamo.tags.each do |tag| %>
-      <td><%= tag.tag_name %></td>
+      <td nowrap><%= tag.tag_name %></td>
     <% end %>
   </tr>
 </table>

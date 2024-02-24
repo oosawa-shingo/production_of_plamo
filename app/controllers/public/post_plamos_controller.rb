@@ -62,7 +62,7 @@ class Public::PostPlamosController < ApplicationController
   end
 
   def is_matching_login_user
-    end_user = EndUser.find(params[:id])
+    end_user = EndUser.find(current_end_user.id)
     unless end_user.id == current_end_user.id
       redirect_to post_plamos_path
     end

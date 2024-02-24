@@ -3,7 +3,7 @@
 
   <%= render 'plamoimage-slider', post_plamo: @post_plamo %>
 
-    <div class="col-6 mt-5 ml-5">
+    <div class="col-6 mt-5 ml-3">
       <div>
         <% if @post_plamo.end_user == current_end_user %>
           <%= link_to "編集する", edit_post_plamo_path, class: "btn btn-success mr-5" %>
