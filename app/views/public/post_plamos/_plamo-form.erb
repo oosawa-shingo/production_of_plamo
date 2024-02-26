@@ -11,13 +11,10 @@
     <th class="table_item_introduction">こだわりポイントや設定 etc</th>
   </tr>
   <tr>
-    <!--<td><%#= safe_join(post_plamo.introduction.split("\n"),tag(:br)) %></td>-->
     <td nowrap><%= post_plamo.introduction %></td>
   </tr>
   <tr>
     <th>タグ</th>
-  </tr>
-  <tr>
     <% post_plamo.tags.each do |tag| %>
       <td nowrap><%= tag.tag_name %></td>
     <% end %>
