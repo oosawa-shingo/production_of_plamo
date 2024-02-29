@@ -1,12 +1,12 @@
 <div class="col-5">
   <div class="slider">
     <% post_plamo.plamo_images.each do |images| %>
-      <%= image_tag images, class:"img" %>
+      <%= image_tag images.variant(resize_to_fit: [500, 400]), class:"img" %>
     <% end %>
   </div>
   <div class="thumbnail">
     <% post_plamo.plamo_images.each do |images| %>
-      <%= image_tag images, class:"img" %>
+      <%= image_tag images.variant(resize: "55x55"), class:"img" %>
     <% end %>
   </div>
 </div>
