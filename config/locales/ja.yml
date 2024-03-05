@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      end_user:
+        end_user: "ユーザー"
+        name: "ユーザー名"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        email: "メールアドレス"
+      sessions:
+        signed_in: "ログインしました"
+        signed_out: "ログアウトしました"
+  errors:
+    messages:
+      not_saved: "エラーが発生したため保存されませんでした"
+      blank: "を入力してください。"
