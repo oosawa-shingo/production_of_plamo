@@ -13,4 +13,42 @@ ja:
   errors:
     messages:
       not_saved: "エラーが発生したため保存されませんでした"
-      blank: "を入力してください。"
+      blank: "を入力してください"
+
+ja:
+  activerecord:
+    attributes:
+      post_plamo:
+        title: "タイトル"
+        introduction: "こだわりポイントや設定 etc..."
+        plamo_images: "画像"
+        tags: "タグ"
+  errors:
+    attributes:
+      title:
+        blank: "を入力してください"
+      introduction:
+        blank: "を入力してください"
+      plamo_images:
+        blank: "を選択してください"
+      tags:
+        blank: "を選択してください"
+
+ja:
+  activerecord:
+    attributes:
+      post_review:
+        title: "タイトル"
+        review_item: "商品名"
+        feeling: "使ってみた感想"
+        review_images: "画像"
+  errors:
+    attributes:
+      title:
+        blank: "を入力してください"
+      review_item:
+        blank: "を入力してください"
+      feeling:
+        blank: "を入力してください"
+      review_images:
+        blank: "を選択してください"
