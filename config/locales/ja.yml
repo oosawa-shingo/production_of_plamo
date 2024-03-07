@@ -2,7 +2,6 @@ ja:
   activerecord:
     attributes:
       end_user:
-        end_user: "ユーザー"
         name: "ユーザー名"
         password: "パスワード"
         password_confirmation: "パスワード確認"
