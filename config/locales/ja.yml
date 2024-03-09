@@ -2,6 +2,7 @@ ja:
   activerecord:
     attributes:
       end_user:
+        end_user: "ユーザー"
         name: "ユーザー名"
         password: "パスワード"
         password_confirmation: "パスワード確認"
@@ -22,6 +23,11 @@ ja:
         introduction: "こだわりポイントや設定 etc..."
         tags: "タグ"
         plamo_images: "画像"
+      post_review:
+        title: "タイトル"
+        review_item: "商品名"
+        feeling: "使ってみた感想"
+        review_images: "画像"
   errors:
     attributes:
       title:
@@ -32,19 +38,6 @@ ja:
         blank: "を選択してください"
       plamo_images:
         blank: "を選択してください"
-
-ja:
-  activerecord:
-    attributes:
-      post_review:
-        title: "タイトル"
-        review_item: "商品名"
-        feeling: "使ってみた感想"
-        review_images: "画像"
-  errors:
-    attributes:
-      title:
-        blank: "を入力してください"
       review_item:
         blank: "を入力してください"
       feeling:
