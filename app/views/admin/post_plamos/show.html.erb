@@ -1,15 +1,19 @@
+<!--管理者投稿詳細画面-->
 <div class="container">
   <div class="row mx-auto">
 
+    <!--投稿された画像を表示-->
     <%= render 'public/post_plamos/plamoimage-slider', post_plamo: @post_plamo %>
 
     <div class="col-6 mt-5 ml-5">
       <%= link_to "削除する", admin_post_plamo_path(@post_plamo.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
 
+      <!--投稿されたユーザーの情報を表示-->
       <%= render 'public/post_plamos/plamo-form', post_plamo: @post_plamo %>
     </div>
   </div>
 
+<!--コメントを表示-->
   <div class="row">
     <div class="col-10">
       <table class="table table-borderless text-white">
