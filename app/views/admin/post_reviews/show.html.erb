@@ -1,15 +1,15 @@
+<!--管理者レビュー詳細画面-->
 <div class="container">
   <div class="row mx-auto">
 
+    <!--投稿された画像を表示-->
     <%= render 'public/post_reviews/reviewimage-slider', post_review: @post_review %>
 
     <div class="col-6 mt-5 ml-5">
-      <div>
-        <%= link_to "削除する", admin_post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-      </div>
+      <%= link_to "削除する", admin_post_review_path(@post_review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
 
+      <!--投稿されたユーザーの情報を表示-->
       <%= render 'public/post_reviews/review-form', post_review: @post_review %>
-
     </div>
   </div>
 </div>
