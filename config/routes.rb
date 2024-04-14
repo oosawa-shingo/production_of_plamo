@@ -9,8 +9,13 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
   }
 
+  devise_scope :admin do
+    get '/admin/sign_out', to: 'devise/sessions#destroy'
+  end
+
   devise_scope :end_user do
     post '/end_users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    get '/end_users/sign_out', to: 'devise/sessions#destroy'
   end
 
   namespace :admin do
