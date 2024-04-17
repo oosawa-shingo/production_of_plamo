@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   devise_scope :end_user do
     post '/end_users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    get '/end_users/guest_sign_in', to: 'public/sessions#guest_sign_in'
     get '/end_users/sign_out', to: 'devise/sessions#destroy'
   end
 
