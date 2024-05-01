@@ -12,7 +12,7 @@ class EndUser < ApplicationRecord
 
   def get_profile_image
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpeg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpeg', content_type: 'image/jpeg')
     end
     profile_image
