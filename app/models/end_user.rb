@@ -10,13 +10,13 @@ class EndUser < ApplicationRecord
   has_many :usefuls, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
-  # def get_profile_image
-  #   unless profile_image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image2.jpeg')
-  #     profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-  #   end
-  #   profile_image
-  # end
+  def get_profile_image
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image2.jpeg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image
+  end
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |end_user|
