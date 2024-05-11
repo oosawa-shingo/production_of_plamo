@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-6">
       <h4><会員情報></h4>
-      <%= image_tag @end_user.get_profile_image, size:"200x200" %>
-      <!--<#% if @end_user.profile_image.attached? %>-->
-      <!--  <#%= image_tag @end_user.profile_image, size: "200x200" %>-->
-      <!--<#% else %>-->
-      <!--  <#%= image_tag asset_path('no_image2.jpeg'), size: "200x200" %>-->
-      <!--<#% end %>-->
+      <!--<#%= image_tag @end_user.get_profile_image, size:"200x200" %>-->
+      <% if @end_user.profile_image.attached? %>
+        <%= image_tag @end_user.profile_image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image2.jpeg', size: "200x200" %>
+      <% end %>
       <table class="table text-white">
         <tbody>
           <tr>
