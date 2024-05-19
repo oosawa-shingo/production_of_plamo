@@ -11,7 +11,7 @@
     <th class="table_item_introduction">こだわりポイントや設定 etc</th>
   </tr>
   <tr>
-    <td nowrap><%= post_plamo.introduction %></td>
+    <td nowrap><%= safe_join(post_plamo.introduction.split("\n"),tag(:br)) %></td>
   </tr>
   <tr>
     <th>タグ</th>
